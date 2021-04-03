@@ -1,0 +1,4 @@
+ArchECM
+*.o
+cmake-build-debug
+.idea
