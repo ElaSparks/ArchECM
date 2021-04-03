@@ -23,7 +23,8 @@ enum keys {
 
 class MyReadKey {
 private:
-    struct termios mySettings; // to store my current settings
+    struct termios mySettings {
+    }; // to store my current settings
     int rk_mytermsave();
     int rk_mytermrestore();
     int rk_mytermregime(int regime, int vtime, int vmin, int echo, int sigint);

@@ -52,7 +52,7 @@ int MyBigChars::bc_printbigchar(
             if ((symbol & 1)) {
                 bc_printA("a");
             } else {
-                std::cout << " ";
+                printf(" ");
             }
             symbol = symbol >> 1;
         }
