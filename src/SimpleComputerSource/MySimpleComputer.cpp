@@ -1,4 +1,4 @@
-#include "../include/MySimpleComputer.h"
+#include "../../include/MySimpleComputer.h"
 MySimpleComputer::MySimpleComputer()
     : commands(
             {0x10,

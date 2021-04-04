@@ -1,4 +1,4 @@
-#include "../include/MyReadKey.h"
+#include "../../include/MyReadKey.h"
 int MyReadKey::rk_mytermregime(
         int regime,
         int vtime,

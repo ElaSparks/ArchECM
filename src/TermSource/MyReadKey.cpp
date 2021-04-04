@@ -1,4 +1,4 @@
-#include "../include/MyReadKey.h"
+#include "../../include/MyReadKey.h"
 int MyReadKey::rk_readkey(keys& key) // reads a keystroke
 {
     rk_mytermsave();

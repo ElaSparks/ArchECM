@@ -1,4 +1,4 @@
-#include "../include/MyTerm.h"
+#include "../../include/MyTerm.h"
 void MyTerm::mt_clrscr()
 {
     printf("\033c");

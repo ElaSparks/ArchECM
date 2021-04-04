@@ -6,17 +6,22 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 
 add_executable(ArchECM
         src/main.cpp
-        src/MyTerm.cpp
+        src/TermSource/MyTerm.cpp
         include/MyTerm.h
-        src/MyBigChars.cpp
+        src/BigCharSouce/MyBigChars.cpp
         include/MyBigChars.h
-        src/bigCharInit.cpp
-        src/MyReadKey.cpp
+        src/BigCharSouce/bigCharInit.cpp
+        src/TermSource/MyReadKey.cpp
         include/MyReadKey.h
-        src/TermRegime.cpp
-        src/TermSaveNRestore.cpp
-        src/MySimpleComputer.cpp
+        src/TermSource/TermRegime.cpp
+        src/TermSource/TermSaveNRestore.cpp
+        src/SimpleComputerSource/MySimpleComputer.cpp
         include/MySimpleComputer.h
-        src/SimpleComputerMemory.cpp
-        src/SimpleComputerHandler.cpp
-        src/GUI/GUIBigChar.cpp src/GUI/GUIFramesNNames.cpp src/GUI/MainActivity.cpp src/GUI/GUIFlagsNInstruction.cpp src/GUI/GUIMemory.cpp src/GUI/GUIAll.cpp)
+        src/SimpleComputerSource/SimpleComputerMemory.cpp
+        src/SimpleComputerSource/SimpleComputerHandler.cpp
+        src/GUI/GUIBigChar.cpp
+        src/GUI/GUIFramesNNames.cpp
+        src/GUI/MainActivity.cpp
+        src/GUI/GUIFlagsNInstruction.cpp
+        src/GUI/GUIMemory.cpp
+        src/GUI/GUIAll.cpp)
