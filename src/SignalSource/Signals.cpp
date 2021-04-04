@@ -32,6 +32,7 @@ void MySimpleComputer::oneStep()
 }
 void MySimpleComputer::runEachMemory()
 {
+    globalPC = this;
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 1;
     newTimer.it_interval.tv_usec = 0;
