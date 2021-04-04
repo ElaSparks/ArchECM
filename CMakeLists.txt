@@ -24,4 +24,4 @@ add_executable(ArchECM
         src/MainActivity.cpp
         src/GUI/GUIFlagsNInstruction.cpp
         src/GUI/GUIMemory.cpp
-        src/GUI/GUIAll.cpp src/SignalSource/Signals.cpp)
+        src/GUI/GUIAll.cpp src/SignalSource/Signals.cpp src/GUI/GUIAccumulatorNOperation.cpp)

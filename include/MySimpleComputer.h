@@ -38,6 +38,8 @@ private:
     int DrawMemory();      // Print values which ram contain
     int DrawFlags();       // Print flags value
     int DrawBigChar();     // Print big char
+    int DrawAccumulator(); // Print value which accumulator contain
+    int DrawOperation();   // Print encoded operation
     // signals
     struct itimerval newTimer, oldTimer;
     static void stopHandler(int signal);
