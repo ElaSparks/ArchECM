@@ -1,4 +1,4 @@
-#include "../include/MyReadKey.h"
+#include "../../include/MyReadKey.h"
 int MyReadKey::rk_mytermsave() // in order to temporarily save the settings
                                // before reading the symbol
 {

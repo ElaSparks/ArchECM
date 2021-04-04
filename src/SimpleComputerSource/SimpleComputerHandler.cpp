@@ -1,4 +1,4 @@
-#include "../include/MySimpleComputer.h"
+#include "../../include/MySimpleComputer.h"
 int MySimpleComputer::sc_regSet(int reg, int value)
 {
     if ((reg >= 1) && (reg <= 5) && (value == 1 || value == 0)) {

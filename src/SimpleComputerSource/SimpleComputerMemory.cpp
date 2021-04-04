@@ -1,4 +1,4 @@
-#include "../include/MySimpleComputer.h"
+#include "../../include/MySimpleComputer.h"
 int MySimpleComputer::sc_memorySet(int address, int value)
 {
     if ((address >= 0) && (address <= 99)) {
