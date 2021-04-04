@@ -1,4 +1,4 @@
-#include "../../include/MySimpleComputer.h"
+#include "../include/MySimpleComputer.h"
 
 void MySimpleComputer::runComputer()
 {
@@ -15,6 +15,8 @@ void MySimpleComputer::runComputer()
             sc_memorySave("memory.txt");
             break;
         case key_reset:
+            signal(SIGUSR1, stopHandler);
+            raise(SIGUSR1);
             sc_memoryInit();
             sc_regInit();
             break;
@@ -47,8 +49,10 @@ void MySimpleComputer::runComputer()
             }
             break;
         case key_run:
+            runEachMemory();
             break;
         case key_step:
+            oneStep();
             break;
         case key_f5:
             break;

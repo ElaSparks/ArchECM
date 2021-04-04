@@ -21,7 +21,7 @@ add_executable(ArchECM
         src/SimpleComputerSource/SimpleComputerHandler.cpp
         src/GUI/GUIBigChar.cpp
         src/GUI/GUIFramesNNames.cpp
-        src/GUI/MainActivity.cpp
+        src/MainActivity.cpp
         src/GUI/GUIFlagsNInstruction.cpp
         src/GUI/GUIMemory.cpp
-        src/GUI/GUIAll.cpp)
+        src/GUI/GUIAll.cpp src/SignalSource/Signals.cpp)

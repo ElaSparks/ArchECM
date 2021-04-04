@@ -38,6 +38,12 @@ private:
     int DrawMemory();      // Print values which ram contain
     int DrawFlags();       // Print flags value
     int DrawBigChar();     // Print big char
+    // signals
+    struct itimerval newTimer, oldTimer;
+    static void stopHandler(int signal);
+    static void runHandler(int signal);
+    void oneStep();
+    void runEachMemory();
 
 public:
     MySimpleComputer();
