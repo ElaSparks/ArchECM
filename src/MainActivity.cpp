@@ -1,4 +1,4 @@
-#include "../../include/MySimpleComputer.h"
+#include "../include/MySimpleComputer.h"
 
 void MySimpleComputer::runComputer()
 {
