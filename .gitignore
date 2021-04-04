@@ -1,4 +1,7 @@
 ArchECM
+memory.txt
 *.o
 cmake-build-debug
 .idea
+!build/.gitkeep
+build/
