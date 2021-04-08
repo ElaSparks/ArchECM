@@ -17,8 +17,8 @@ void MySimpleComputer::runHandler(int signal)
         globalPC->DrawAll();
         ++globalPC->instructionCounter;
     } else {
-        globalPC->DrawAll();
         stopHandler(0);
+        globalPC->DrawAll();
     }
 }
 void MySimpleComputer::oneStep()
