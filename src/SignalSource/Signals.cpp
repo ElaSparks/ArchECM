@@ -13,9 +13,14 @@ void MySimpleComputer::stopHandler(int signal)
 }
 void MySimpleComputer::runHandler(int signal)
 {
+    itimerval timerTMP{};
+    getitimer(ITIMER_REAL, &timerTMP);
     if (globalPC->instructionCounter != 99) {
-        globalPC->DrawAll();
         ++globalPC->instructionCounter;
+        if (timerTMP.it_interval.tv_sec == 0) {
+            stopHandler(0);
+        }
+        globalPC->DrawAll();
     } else {
         stopHandler(0);
         globalPC->DrawAll();
@@ -24,11 +29,12 @@ void MySimpleComputer::runHandler(int signal)
 void MySimpleComputer::oneStep()
 {
     globalPC = this;
+    sc_regSet(IGNORE_IMPULS, 0);
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 0;
     newTimer.it_interval.tv_usec = 0;
-    newTimer.it_value.tv_sec = 0;
-    newTimer.it_value.tv_usec = 1;
+    newTimer.it_value.tv_sec = 1;
+    newTimer.it_value.tv_usec = 0;
     setitimer(ITIMER_REAL, &newTimer, &oldTimer);
 }
 void MySimpleComputer::runEachMemory()
