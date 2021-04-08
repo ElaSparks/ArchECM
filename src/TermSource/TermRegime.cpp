@@ -7,8 +7,7 @@ int MyReadKey::rk_mytermregime(
         int sigint) // the function is designed to change the operating mode of
                     // the terminal
 {
-    struct termios termSettings {
-    };
+    termios termSettings{};
     if (tcgetattr(0, &termSettings) != 0) {
         return -1; // if you can't read the settings for the terminal
     }

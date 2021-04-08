@@ -9,6 +9,7 @@ void MySimpleComputer::stopHandler(int signal)
     globalPC->newTimer.it_value.tv_sec = 0;
     globalPC->newTimer.it_value.tv_usec = 0;
     globalPC->sc_regSet(IGNORE_IMPULS, 1);
+    globalPC->rk_switchecho();
     setitimer(ITIMER_REAL, &globalPC->newTimer, &globalPC->oldTimer);
 }
 void MySimpleComputer::runHandler(int signal)
@@ -28,6 +29,7 @@ void MySimpleComputer::runHandler(int signal)
 }
 void MySimpleComputer::oneStep()
 {
+    rk_switchecho();
     globalPC = this;
     sc_regSet(IGNORE_IMPULS, 0);
     signal(SIGALRM, runHandler);
@@ -39,6 +41,7 @@ void MySimpleComputer::oneStep()
 }
 void MySimpleComputer::runEachMemory()
 { //сделать Эхо чтобы во время проги ввседенные символы не сыпались в терминал
+    rk_switchecho();
     globalPC = this;
     sc_regSet(IGNORE_IMPULS, 0);
     signal(SIGALRM, runHandler);
