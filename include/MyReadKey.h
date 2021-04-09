@@ -15,6 +15,7 @@ enum keys {
     key_run,
     key_step,
     key_reset,
+    key_enter,
     key_f5,
     key_f6,
     key_quit,

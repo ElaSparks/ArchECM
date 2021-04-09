@@ -3,7 +3,11 @@ int MySimpleComputer::DrawAccumulator()
 {
     int error = 0;
     error += mt_gotoXY(2, 69);
-    printf("+%04X", (unsigned int)accumulator.to_ulong());
+    if (accumulator < 0) {
+        printf("-");
+    } else
+        printf("+");
+    printf("%04X", abs(accumulator));
     return error;
 }
 int MySimpleComputer::DrawOperation()
@@ -11,9 +15,7 @@ int MySimpleComputer::DrawOperation()
     int error = 0;
     int command, operand;
     error += mt_gotoXY(8, 68);
-    if (sc_commandDecode(
-                memory[instructionCounter].to_ulong(), command, operand)
-        == -1) {
+    if (sc_commandDecode(memory[instructionCounter], command, operand) == -1) {
         std::cout << "+00 : 00";
     } else {
         printf("+%02X", command);

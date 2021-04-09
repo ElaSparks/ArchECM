@@ -6,7 +6,11 @@ int MySimpleComputer::DrawBigChar()
     if (sc_memoryGet(instructionCounter, value) != -1) {
         std::stringstream stream;
         if (value >> 14 & 1) { // not a command
-            stream << std::setw(4) << std::setfill('0') << std::hex << value;
+            if (value < 0) {
+                check = -1;
+            }
+            stream << std::setw(4) << std::setfill('0') << std::hex
+                   << std::abs(value);
         } else {
             int command = 0, operand = 0;
             if (sc_commandDecode(value, command, operand) != -1) {
@@ -16,12 +20,20 @@ int MySimpleComputer::DrawBigChar()
                        << operand;
                 check = 1;
             } else {
+                if (value < 0) {
+                    check = -1;
+                }
                 stream << std::setw(4) << std::setfill('0') << std::hex
-                       << value;
+                       << std::abs(value);
             }
         }
         std::string result(stream.str());
-        bc_printbigchar(bc_initbigchar(check ? '+' : ' '), 14, 2, Cyan, Black);
+        bc_printbigchar(
+                bc_initbigchar(check == 1 ? '+' : ((check == -1) ? '-' : ' ')),
+                14,
+                2,
+                Cyan,
+                Black);
         bc_printbigchar(bc_initbigchar(result[0]), 14, 11, Cyan, Black);
         bc_printbigchar(bc_initbigchar(result[1]), 14, 20, Cyan, Black);
         bc_printbigchar(bc_initbigchar(result[2]), 14, 29, Cyan, Black);
