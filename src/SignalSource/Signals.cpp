@@ -22,12 +22,15 @@ void MySimpleComputer::runHandler(int signal)
     if (globalPC->instructionCounter != 99) {
         ++globalPC->instructionCounter;
         if (timerTMP.it_interval.tv_sec == 0) {
+            MySimpleComputer* pc = globalPC;
             stopHandler(0);
-        }
-        globalPC->DrawAll();
+            pc->DrawAll();
+        } else
+            globalPC->DrawAll();
     } else {
+        MySimpleComputer* pc = globalPC;
         stopHandler(0);
-        globalPC->DrawAll();
+        pc->DrawAll();
     }
 }
 void MySimpleComputer::oneStep()
