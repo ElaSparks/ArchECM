@@ -13,6 +13,7 @@ void MySimpleComputer::stopHandler(int signal)
         globalPC->rk_switchecho();
         setitimer(ITIMER_REAL, &globalPC->newTimer, &globalPC->oldTimer);
     }
+    globalPC = nullptr;
 }
 void MySimpleComputer::runHandler(int signal)
 {
