@@ -13,7 +13,7 @@ int MySimpleComputer::DrawBigChar()
                    << std::abs(value);
         } else {
             int command = 0, operand = 0;
-            if (sc_commandDecode(value, command, operand) != -1) {
+            if (decodeCommand(value, command, operand) != -1) {
                 stream << std::setw(2) << std::setfill('0') << std::hex
                        << command;
                 stream << std::setw(2) << std::setfill('0') << std::hex

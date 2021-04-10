@@ -16,7 +16,7 @@ int MySimpleComputer::DrawMemory()
                 } else
                     printf(" %04X", value);
             } else { // is a command
-                if (sc_commandDecode(value, command, operand) != -1) {
+                if (decodeCommand(value, command, operand) != -1) {
                     printf("+%02X", command);
                     printf("%02X", operand);
                 } else { // command not found

@@ -18,10 +18,15 @@ add_executable(ArchECM
         src/SimpleComputerSource/MySimpleComputer.cpp
         include/MySimpleComputer.h
         src/SimpleComputerSource/SimpleComputerMemory.cpp
-        src/SimpleComputerSource/SimpleComputerHandler.cpp
+        src/ALU/ALURegNAccumHandler.cpp
         src/GUI/GUIBigChar.cpp
         src/GUI/GUIFramesNNames.cpp
         src/MainActivity.cpp
         src/GUI/GUIFlagsNInstruction.cpp
         src/GUI/GUIMemory.cpp
-        src/GUI/GUIAll.cpp src/SignalSource/Signals.cpp src/GUI/GUIAccumulatorNOperation.cpp)
+        src/GUI/GUIAll.cpp
+        src/SignalSource/Signals.cpp
+        src/GUI/GUIAccumulatorNOperation.cpp
+        src/ALU/ArithmeticLogicUnit.cpp include/ArithmeticLogicUnit.h
+        src/TermSource/TermEcho.cpp
+        src/ALU/ALUEncDecCommands.cpp src/ALU/ALUMemoryHandler.cpp src/ALU/Commands/ALUIO.cpp src/ALU/Commands/ALULoadNStore.cpp src/ALU/Commands/ALUArithmetic.cpp src/ALU/Commands/ALUControlTransfer.cpp)

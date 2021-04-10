@@ -23,6 +23,7 @@ void MySimpleComputer::runComputer()
                 raise(SIGUSR1);
                 sc_memoryInit();
                 sc_regInit();
+                sc_accumulatorInit();
                 sc_regSet(IGNORE_IMPULS, 1);
                 break;
             case key_up:
@@ -54,13 +55,26 @@ void MySimpleComputer::runComputer()
                 }
                 break;
             case key_run:
+
                 runEachMemory();
                 break;
             case key_step:
                 oneStep();
                 break;
-            case key_f5:
+            case key_enter: {
+                short value = 0;
+                std::cout << "Value of memory: ";
+                std::cin >> value;
+                sc_memorySet(instructionCounter, value);
                 break;
+            }
+            case key_f5: {
+                short value = 0;
+                std::cout << "Value of accumulator: ";
+                std::cin >> value;
+                sc_accumulatorSet(value);
+                break;
+            }
             case key_f6:
                 break;
             case key_quit:
