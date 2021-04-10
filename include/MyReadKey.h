@@ -15,6 +15,7 @@ enum keys {
     key_run,
     key_step,
     key_reset,
+    key_enter,
     key_f5,
     key_f6,
     key_quit,
@@ -23,14 +24,14 @@ enum keys {
 
 class MyReadKey {
 private:
-    struct termios mySettings {
-    }; // to store my current settings
+    termios mySettings{}; // to store my current settings
     int rk_mytermsave();
     int rk_mytermrestore();
     int rk_mytermregime(int regime, int vtime, int vmin, int echo, int sigint);
 
 protected:
     int rk_readkey(enum keys& key);
+    int rk_switchecho();
 };
 
 #endif

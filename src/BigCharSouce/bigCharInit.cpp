@@ -5,6 +5,9 @@ unsigned long long MyBigChars::bc_initbigchar(char value)
     case '+': {
         return 105194717184;
     }
+    case '-': {
+        return 2113929216;
+    }
     case '0':
         return 4378558560649593660;
     case '1':

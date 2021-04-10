@@ -10,6 +10,8 @@ int MySimpleComputer::DrawAll()
     error += DrawInstruction();
     error += DrawFlags();
     error += DrawMemory();
+    error += DrawAccumulator();
+    error += DrawOperation();
     mt_gotoXY(24, 0);
     if (error < 0) {
         return -1;

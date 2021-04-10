@@ -11,13 +11,19 @@ int MySimpleComputer::DrawMemory()
             }
             sc_memoryGet(row * 10 + col, value);
             if ((value >> 14 & 1)) { // not a command
-                printf(" %04X", value);
+                if (value < 0) {
+                    printf("-%04X", std::abs(value));
+                } else
+                    printf(" %04X", value);
             } else { // is a command
-                if (sc_commandDecode(value, command, operand) != -1) {
+                if (decodeCommand(value, command, operand) != -1) {
                     printf("+%02X", command);
                     printf("%02X", operand);
                 } else { // command not found
-                    printf(" %04X", value);
+                    if (value < 0) {
+                        printf("-%04X", std::abs(value));
+                    } else
+                        printf(" %04X", value);
                 }
             }
             printf(((col < 9) ? " " : ""));

@@ -1,22 +1,4 @@
 #include "../../include/MySimpleComputer.h"
-int MySimpleComputer::sc_memorySet(int address, int value)
-{
-    if ((address >= 0) && (address <= 99)) {
-        memory[address] = value;
-        return 0;
-    }
-    sc_regSet(OUT_OF_MEMORY, 1);
-    return -1;
-}
-int MySimpleComputer::sc_memoryGet(int address, int& value)
-{
-    if ((address >= 0) && (address <= 99)) {
-        value = (int)memory[address].to_ulong();
-        return 0;
-    }
-    sc_regSet(OUT_OF_MEMORY, 1);
-    return -1;
-}
 int MySimpleComputer::sc_memorySave(const std::string& filename)
 {
     std::ofstream output(filename, std::ios::out | std::ios::binary);

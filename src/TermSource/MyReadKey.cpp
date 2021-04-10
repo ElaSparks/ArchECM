@@ -18,6 +18,8 @@ int MyReadKey::rk_readkey(keys& key) // reads a keystroke
         key = key_f5;
     else if (strcmp(buf, "\E[17~") == 0)
         key = key_f6;
+    else if (buf[0] == '\n')
+        key = key_enter;
     else if (buf[0] == 'l')
         key = key_load;
     else if (buf[0] == 's')
