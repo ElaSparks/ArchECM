@@ -37,7 +37,7 @@ void MySimpleComputer::oneStep()
 {
     rk_switchecho();
     globalPC = this;
-    sc_regSet(IGNORE_IMPULS, 0);
+    sc_regInit();
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 0;
     newTimer.it_interval.tv_usec = 0;
@@ -49,7 +49,7 @@ void MySimpleComputer::runEachMemory()
 {
     rk_switchecho();
     globalPC = this;
-    sc_regSet(IGNORE_IMPULS, 0);
+    sc_regInit();
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 1;
     newTimer.it_interval.tv_usec = 0;
