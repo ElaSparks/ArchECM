@@ -8,18 +8,13 @@
 
 #include "ArithmeticLogicUnit.h"
 #include "MyBigChars.h"
-#include "MyReadKey.h"
 #include <fstream>
-#include <signal.h>
-#include <sys/time.h>
 
-class MySimpleComputer : protected MyBigChars,
-                         protected MyReadKey,
-                         protected ArithmeticLogicUnit {
+class MySimpleComputer : protected MyBigChars, protected ArithmeticLogicUnit {
 private:
-    void sc_regInit();
-    void sc_memoryInit();
-    void sc_accumulatorInit();
+    void sc_regInit();                              // clean registers
+    void sc_memoryInit();                           // clean memory
+    void sc_accumulatorInit();                      // clean accumulator
     int sc_memorySave(const std::string& filename); // save ram in file
     int sc_memoryLoad(const std::string& filename); // load ram from file
     // gui
@@ -33,7 +28,6 @@ private:
     int DrawAccumulator(); // Print value which accumulator contain
     int DrawOperation();   // Print encoded operation
     // signals
-    struct itimerval newTimer, oldTimer;
     static void stopHandler(int signal);
     static void runHandler(int signal);
     void oneStep();

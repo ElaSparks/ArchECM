@@ -18,6 +18,8 @@ void MySimpleComputer::stopHandler(int signal)
 void MySimpleComputer::runHandler(int signal)
 {
     itimerval timerTMP{};
+    globalPC->flagsLO = globalPC->flags;
+    globalPC->sc_regInit();
     getitimer(ITIMER_REAL, &timerTMP);
     if (globalPC->instructionCounter != 99) {
         ++globalPC->instructionCounter;
@@ -37,7 +39,6 @@ void MySimpleComputer::oneStep()
 {
     rk_switchecho();
     globalPC = this;
-    sc_regInit();
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 0;
     newTimer.it_interval.tv_usec = 0;
@@ -49,7 +50,6 @@ void MySimpleComputer::runEachMemory()
 {
     rk_switchecho();
     globalPC = this;
-    sc_regInit();
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 1;
     newTimer.it_interval.tv_usec = 0;

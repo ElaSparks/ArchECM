@@ -1,7 +1,8 @@
 #include "../../include/MySimpleComputer.h"
 int MySimpleComputer::DrawMemory()
 {
-    int value, error = 0, command = 0, operand = 0;
+    short value;
+    int error = 0, command = 0, operand = 0;
     for (int row = 0; row < 10; ++row) {
         error += mt_gotoXY(2 + row, 2);
         for (int col = 0; col < 10; ++col) {

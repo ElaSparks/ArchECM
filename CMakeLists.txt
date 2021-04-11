@@ -29,4 +29,9 @@ add_executable(ArchECM
         src/GUI/GUIAccumulatorNOperation.cpp
         src/ALU/ArithmeticLogicUnit.cpp include/ArithmeticLogicUnit.h
         src/TermSource/TermEcho.cpp
-        src/ALU/ALUEncDecCommands.cpp src/ALU/ALUMemoryHandler.cpp src/ALU/Commands/ALUIO.cpp src/ALU/Commands/ALULoadNStore.cpp src/ALU/Commands/ALUArithmetic.cpp src/ALU/Commands/ALUControlTransfer.cpp)
+        src/ALU/ALUEncDecCommands.cpp
+        src/ALU/ALUMemoryHandler.cpp
+        src/ALU/Commands/ALUIO.cpp
+        src/ALU/Commands/ALULoadNStore.cpp
+        src/ALU/Commands/ALUArithmetic.cpp
+        src/ALU/Commands/ALUControlTransfer.cpp)

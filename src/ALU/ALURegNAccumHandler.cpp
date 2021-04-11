@@ -24,3 +24,12 @@ int ArithmeticLogicUnit::sc_accumulatorSet(short value)
     sc_regSet(OVERFLOW, 1);
     return -1;
 }
+int ArithmeticLogicUnit::sc_instructionCounterSet(short address)
+{
+    if ((address >= 0) && (address <= 99)) {
+        instructionCounter = address;
+        return 0;
+    }
+    sc_regSet(OUT_OF_MEMORY, 1);
+    return -1;
+}

@@ -12,7 +12,7 @@ int ArithmeticLogicUnit::sc_memorySet(int address, short value)
     sc_regSet(OUT_OF_MEMORY, 1);
     return -1;
 }
-int ArithmeticLogicUnit::sc_memoryGet(int address, int& value)
+int ArithmeticLogicUnit::sc_memoryGet(int address, short& value)
 {
     if ((address >= 0) && (address <= 99)) {
         value = memory[address];
