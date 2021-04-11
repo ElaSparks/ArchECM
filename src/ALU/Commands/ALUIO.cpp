@@ -1,7 +1,7 @@
 #include "../../../include/ArithmeticLogicUnit.h"
 int ArithmeticLogicUnit::commandRead(int operand)
 {
-    rk_switchecho();
+    // rk_switchecho();
     newTimer.it_interval.tv_sec = 0;
     newTimer.it_interval.tv_usec = 0;
     newTimer.it_value.tv_sec = 0;
@@ -11,7 +11,7 @@ int ArithmeticLogicUnit::commandRead(int operand)
     std::cout << "Input: ";
     std::cin >> value;
     sc_memorySet(operand, value);
-    rk_switchecho();
+    // rk_switchecho();
     setitimer(ITIMER_REAL, &oldTimer, &newTimer);
     return 0;
 }
