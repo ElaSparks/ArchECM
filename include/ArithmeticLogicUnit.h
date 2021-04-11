@@ -3,7 +3,7 @@
 #define OVERFLOW 1
 #define DIVISION_BY_ZERO 2
 #define OUT_OF_MEMORY 3
-#define IGNORE_IMPULS 4
+#define IGNORE_IMPULSE 4
 #define WRONG_COMMAND 5
 
 #include "MyReadKey.h"

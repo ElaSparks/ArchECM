@@ -5,10 +5,10 @@ void MySimpleComputer::runComputer()
     keys key{};
     setbuf(stdout, nullptr);
     int impulse = 1;
-    sc_regSet(IGNORE_IMPULS, 1);
+    sc_regSet(IGNORE_IMPULSE, 1);
     DrawAll();
     while (key != key_quit) {
-        sc_regGet(IGNORE_IMPULS, impulse);
+        sc_regGet(IGNORE_IMPULSE, impulse);
         if (impulse == 1) {
             rk_readkey(key);
             switch (key) {
@@ -24,7 +24,7 @@ void MySimpleComputer::runComputer()
                 sc_memoryInit();
                 sc_regInit();
                 sc_accumulatorInit();
-                sc_regSet(IGNORE_IMPULS, 1);
+                sc_regSet(IGNORE_IMPULSE, 1);
                 break;
             case key_up:
                 if (instructionCounter / 10 == 0) {

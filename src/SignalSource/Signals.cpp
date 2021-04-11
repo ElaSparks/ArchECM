@@ -9,7 +9,7 @@ void MySimpleComputer::stopHandler(int signal)
         globalPC->newTimer.it_interval.tv_usec = 0;
         globalPC->newTimer.it_value.tv_sec = 0;
         globalPC->newTimer.it_value.tv_usec = 0;
-        globalPC->sc_regSet(IGNORE_IMPULS, 1);
+        globalPC->sc_regSet(IGNORE_IMPULSE, 1);
         globalPC->rk_switchecho();
         setitimer(ITIMER_REAL, &globalPC->newTimer, &globalPC->oldTimer);
     }

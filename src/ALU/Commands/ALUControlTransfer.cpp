@@ -27,7 +27,7 @@ int ArithmeticLogicUnit::commandJNC(int operand)
 }
 int ArithmeticLogicUnit::commandHalt()
 {
-    sc_regSet(IGNORE_IMPULS, 1);
+    sc_regSet(IGNORE_IMPULSE, 1);
     sc_instructionCounterSet(0);
     return 0;
 }
