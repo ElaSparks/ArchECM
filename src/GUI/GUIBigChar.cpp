@@ -10,24 +10,18 @@ int MySimpleComputer::DrawBigChar()
             if (value < 0) {
                 check = -1;
             }
-            stream << std::setw(4) << std::setfill('0') << std::hex
-                   << std::abs(value);
         } else {
             int command = 0, operand = 0;
-            if (decodeCommand(value, command, operand) != -1) {
-                stream << std::setw(2) << std::setfill('0') << std::hex
-                       << command;
-                stream << std::setw(2) << std::setfill('0') << std::hex
-                       << operand;
+            if (decodeCommand(value, command, operand) == 0) {
                 check = 1;
             } else {
                 if (value < 0) {
                     check = -1;
                 }
-                stream << std::setw(4) << std::setfill('0') << std::hex
-                       << std::abs(value);
             }
         }
+        stream << std::setw(4) << std::setfill('0') << std::hex
+               << std::abs(value);
         std::string result(stream.str());
         bc_printbigchar(
                 bc_initbigchar(check == 1 ? '+' : ((check == -1) ? '-' : ' ')),

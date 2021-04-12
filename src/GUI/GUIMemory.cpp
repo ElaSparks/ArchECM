@@ -16,20 +16,20 @@ int MySimpleComputer::DrawMemory()
             sc_memoryGet(row * 10 + col, value);
             if ((value >> 14 & 1)) { // not a command
                 if (value < 0) {
-                    printf("-%04X", std::abs(value));
+                    printf("-");
                 } else
-                    printf(" %04X", value);
+                    printf(" ");
             } else { // is a command
-                if (decodeCommand(value, command, operand) != -1) {
-                    printf("+%02X", command);
-                    printf("%02X", operand);
+                if (decodeCommand(value, command, operand) == 0) {
+                    printf("+");
                 } else { // command not found
                     if (value < 0) {
-                        printf("-%04X", std::abs(value));
+                        printf("-");
                     } else
-                        printf(" %04X", value);
+                        printf(" ");
                 }
             }
+            printf("%04X", std::abs(value));
             printf(((col < 9) ? " " : ""));
             command = 0;
             operand = 0;
