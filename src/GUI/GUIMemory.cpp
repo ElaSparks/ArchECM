@@ -1,13 +1,16 @@
 #include "../../include/MySimpleComputer.h"
 int MySimpleComputer::DrawMemory()
 {
-    short value;
-    int error = 0, command = 0, operand = 0;
+    int value, command = 0, operand = 0;
+    int error = 0;
     for (int row = 0; row < 10; ++row) {
         error += mt_gotoXY(2 + row, 2);
         for (int col = 0; col < 10; ++col) {
             if (row == instructionCounter / 10
                 && col == instructionCounter % 10) {
+                mt_setbgcolor(Yellow); // selected = colourful
+            }
+            if (row == selector / 10 && col == selector % 10) {
                 mt_setbgcolor(Cyan); // selected = colourful
             }
             sc_memoryGet(row * 10 + col, value);

@@ -27,56 +27,60 @@ void MySimpleComputer::runComputer()
                 sc_regSet(IGNORE_IMPULSE, 1);
                 break;
             case key_up:
-                if (instructionCounter / 10 == 0) {
-                    instructionCounter += 90;
+                if (selector / 10 == 0) {
+                    selector += 90;
                 } else {
-                    instructionCounter -= 10;
+                    selector -= 10;
                 }
                 break;
             case key_down:
-                if (instructionCounter / 10 == 9) {
-                    instructionCounter -= 90;
+                if (selector / 10 == 9) {
+                    selector -= 90;
                 } else {
-                    instructionCounter += 10;
+                    selector += 10;
                 }
                 break;
             case key_left:
-                if (instructionCounter == 0) {
-                    instructionCounter = 99;
+                if (selector == 0) {
+                    selector = 99;
                 } else {
-                    --instructionCounter;
+                    --selector;
                 }
                 break;
             case key_right:
-                if (instructionCounter == 99) {
-                    instructionCounter = 0;
+                if (selector == 99) {
+                    selector = 0;
                 } else {
-                    ++instructionCounter;
+                    ++selector;
                 }
                 break;
             case key_run:
-
                 runEachMemory();
                 break;
             case key_step:
                 oneStep();
                 break;
             case key_enter: {
-                short value = 0;
+                int value = 0;
                 std::cout << "Value of memory: ";
                 std::cin >> value;
-                sc_memorySet(instructionCounter, value);
+                sc_memorySet(selector, value);
                 break;
             }
             case key_f5: {
-                short value = 0;
+                int value = 0;
                 std::cout << "Value of accumulator: ";
                 std::cin >> value;
                 sc_accumulatorSet(value);
                 break;
             }
-            case key_f6:
+            case key_f6: {
+                int value = 0;
+                std::cout << "InstructionCounter position: ";
+                std::cin >> value;
+                sc_instructionCounterSet(value);
                 break;
+            }
             case key_quit:
                 mt_clrscr();
                 continue;

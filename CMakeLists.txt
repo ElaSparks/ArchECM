@@ -34,4 +34,4 @@ add_executable(ArchECM
         src/ALU/Commands/ALUIO.cpp
         src/ALU/Commands/ALULoadNStore.cpp
         src/ALU/Commands/ALUArithmetic.cpp
-        src/ALU/Commands/ALUControlTransfer.cpp)
+        src/ALU/Commands/ALUControlTransfer.cpp src/ALU/ControlUnit.cpp)

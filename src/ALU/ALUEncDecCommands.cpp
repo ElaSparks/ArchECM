@@ -6,7 +6,7 @@ int ArithmeticLogicUnit::encodeCommand(int command, int operand, int& value)
         sc_regSet(WRONG_COMMAND, 1);
         return -1;
     }
-    if ((operand >= 0) && (operand <= 99)) {
+    if ((operand < 0) || (operand > 99)) {
         sc_regSet(OUT_OF_MEMORY, 1);
         return -1;
     }
@@ -15,13 +15,17 @@ int ArithmeticLogicUnit::encodeCommand(int command, int operand, int& value)
 }
 int ArithmeticLogicUnit::decodeCommand(int value, int& command, int& operand)
 {
-    if (((std::find(commands.begin(), commands.end(), value >> 7)
-          != commands.end())
-         && (!(value >> 14 & 1)))
-        && (((value & 127) >= 0) && ((value & 127) <= 99))) {
-        command = value >> 7;
-        operand = value & 127;
-        return 0;
+    if ((std::find(commands.begin(), commands.end(), value >> 7)
+         == commands.end())
+        || (value >> 14 & 1)) {
+        sc_regSet(WRONG_COMMAND, 1);
+        return -1;
     }
-    return -1;
+    if (((value & 127) < 0) || ((value & 127) > 99)) {
+        sc_regSet(OUT_OF_MEMORY, 1);
+        return -1;
+    }
+    command = value >> 7;
+    operand = value & 127;
+    return 0;
 }

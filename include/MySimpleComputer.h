@@ -12,6 +12,7 @@
 
 class MySimpleComputer : protected MyBigChars, protected ArithmeticLogicUnit {
 private:
+    int selector = 0;
     void sc_regInit();                              // clean registers
     void sc_memoryInit();                           // clean memory
     void sc_accumulatorInit();                      // clean accumulator

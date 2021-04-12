@@ -16,33 +16,32 @@ ArithmeticLogicUnit::ArithmeticLogicUnit()
              0x57})
 {
 }
-int ArithmeticLogicUnit::ALU(int command, int operand)
+void ArithmeticLogicUnit::ALU(int command, int operand)
 {
     if (command == 0x10)
-        return commandRead(operand);
+        commandRead(operand);
     else if (command == 0x11)
-        return commandWrite(operand);
+        commandWrite(operand);
     else if (command == 0x20)
-        return commandLoad(operand);
+        commandLoad(operand);
     else if (command == 0x21)
-        return commandStore(operand);
+        commandStore(operand);
     else if (command == 0x30)
-        return commandAdd(operand);
+        commandAdd(operand);
     else if (command == 0x31)
-        return commandSub(operand);
+        commandSub(operand);
     else if (command == 0x32)
-        return commandDivide(operand);
+        commandDivide(operand);
     else if (command == 0x33)
-        return commandMul(operand);
+        commandMul(operand);
     else if (command == 0x40)
-        return commandJump(operand);
+        commandJump(operand);
     else if (command == 0x41)
-        return commandJNEG(operand);
+        commandJNEG(operand);
     else if (command == 0x42)
-        return commandJZ(operand);
+        commandJZ(operand);
     else if (command == 0x43)
-        return commandHalt();
+        commandHalt();
     else if (command == 0x57)
-        return commandJNC(operand);
-    return -1;
+        commandJNC(operand);
 }

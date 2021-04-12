@@ -15,7 +15,7 @@ int ArithmeticLogicUnit::sc_regGet(int reg, int& value)
     }
     return -1;
 }
-int ArithmeticLogicUnit::sc_accumulatorSet(short value)
+int ArithmeticLogicUnit::sc_accumulatorSet(int value)
 {
     if (value <= 0x3FFF && value >= -0x4000) {
         accumulator = value;
@@ -24,7 +24,7 @@ int ArithmeticLogicUnit::sc_accumulatorSet(short value)
     sc_regSet(OVERFLOW, 1);
     return -1;
 }
-int ArithmeticLogicUnit::sc_instructionCounterSet(short address)
+int ArithmeticLogicUnit::sc_instructionCounterSet(int address)
 {
     if ((address >= 0) && (address <= 99)) {
         instructionCounter = address;

@@ -2,9 +2,9 @@
 #include <sstream>
 int MySimpleComputer::DrawBigChar()
 {
-    short value;
+    int value;
     int error = 0, check = 0;
-    if (sc_memoryGet(instructionCounter, value) != -1) {
+    if (sc_memoryGet(selector, value) != -1) {
         std::stringstream stream;
         if (value >> 14 & 1) { // not a command
             if (value < 0) {
