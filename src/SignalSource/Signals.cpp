@@ -17,11 +17,18 @@ void MySimpleComputer::stopHandler(int signal)
 }
 void MySimpleComputer::runHandler(int signal)
 {
-    itimerval timerTMP{};                       // var for check step or run
-    globalPC->flagsLO = globalPC->flags;        // remind last state of flags
-    globalPC->sc_regInit();                     // clean flags
-    getitimer(ITIMER_REAL, &timerTMP);          // get currently used timer
-    if (globalPC->instructionCounter != 99) {   // isn`t end of mem
+    itimerval timerTMP{};                     // var for check step or run
+    globalPC->flagsLO = globalPC->flags;      // remind last state of flags
+    globalPC->sc_regInit();                   // clean flags
+    getitimer(ITIMER_REAL, &timerTMP);        // get currently used timer
+    if (globalPC->instructionCounter != 99) { // isn`t end of mem
+        globalPC->controlUnit();              // activate CU
+        if (globalPC->flags != 0) {           // if bad command
+            MySimpleComputer* pc = globalPC;
+            stopHandler(0);
+            pc->DrawAll();
+            return;
+        }
         ++globalPC->instructionCounter;         // goto next
         if (timerTMP.it_interval.tv_sec == 0) { // is step?
             MySimpleComputer* pc = globalPC;

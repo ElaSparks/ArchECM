@@ -12,12 +12,49 @@ void MySimpleComputer::runComputer()
         if (impulse == 1) {
             rk_readkey(key);
             switch (key) {
-            case key_load:
-                sc_memoryLoad("memory.txt");
+            case key_load: {
+                std::string value;
+                std::cout << "Load. File name + file extension: ";
+                std::cin >> value;
+                int length = value.length();
+                if (length >= 3) {
+                    if (value[length - 1] == 'o' && value[length - 2] == '.') {
+                        sc_memoryLoad(value);
+                    } else if (length >= 5) {
+                        if (value[length - 1] == 'm' && value[length - 2] == 's'
+                                    && value[length - 3] == 'a'
+                                    && value[length - 4] == '.'
+                            || value[length - 1] == 's'
+                                    && value[length - 2] == 'a'
+                                    && value[length - 3] == 'b'
+                                    && value[length - 4] == '.') {
+                            translate(value);
+                        } else {
+                            DrawAll();
+                            continue;
+                        }
+                    } else {
+                        DrawAll();
+                        continue;
+                    }
+
+                } else {
+                    DrawAll();
+                    continue;
+                }
+                sc_regInit();
+                sc_accumulatorInit();
+                instructionCounter = 0;
+                sc_regSet(IGNORE_IMPULSE, 1);
                 break;
-            case key_save:
-                sc_memorySave("memory.txt");
+            }
+            case key_save: {
+                std::string value;
+                std::cout << "Saving. File name: ";
+                std::cin >> value;
+                sc_memorySave(value + ".o");
                 break;
+            }
             case key_reset:
                 signal(SIGUSR1, stopHandler);
                 raise(SIGUSR1);

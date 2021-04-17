@@ -47,7 +47,7 @@ protected:
 
     void ALU(int command, int operand);
     void controlUnit();
-    int translate();
+    int translate(const std::string& filename);
 
 public:
     ArithmeticLogicUnit();

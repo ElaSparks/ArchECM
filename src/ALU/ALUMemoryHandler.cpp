@@ -6,11 +6,9 @@ int ArithmeticLogicUnit::sc_memorySet(int address, int value)
             memory[address] = value;
             return 0;
         }
-        sc_regSet(OVERFLOW, 1);
-        return -1;
+        return -OVERFLOW;
     }
-    sc_regSet(OUT_OF_MEMORY, 1);
-    return -1;
+    return -OUT_OF_MEMORY;
 }
 int ArithmeticLogicUnit::sc_memoryGet(int address, int& value)
 {
@@ -18,6 +16,5 @@ int ArithmeticLogicUnit::sc_memoryGet(int address, int& value)
         value = memory[address];
         return 0;
     }
-    sc_regSet(OUT_OF_MEMORY, 1);
-    return -1;
+    return -OUT_OF_MEMORY;
 }
