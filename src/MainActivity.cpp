@@ -16,31 +16,19 @@ void MySimpleComputer::runComputer()
                 std::string value;
                 std::cout << "Load. File name + file extension: ";
                 std::cin >> value;
-                int length = value.length();
-                if (length >= 3) {
-                    if (value[length - 1] == 'o' && value[length - 2] == '.') {
-                        sc_memoryLoad(value);
-                    } else if (length >= 5) {
-                        if (value[length - 1] == 'm' && value[length - 2] == 's'
-                                    && value[length - 3] == 'a'
-                                    && value[length - 4] == '.'
-                            || value[length - 1] == 's'
-                                    && value[length - 2] == 'a'
-                                    && value[length - 3] == 'b'
-                                    && value[length - 4] == '.') {
-                            translate(value);
-                        } else {
-                            DrawAll();
-                            continue;
-                        }
-                    } else {
-                        DrawAll();
-                        continue;
-                    }
-
+                if (value.substr(value.length() - 3, 3) == "asm") {
+                    translateASM(value);
+                } else if (value.substr(value.length() - 3, 3) == "bas") {
+                    translateBAS(value);
+                } else if (value.substr(value.length() - 2, 2) == ".o") {
+                    sc_memoryLoad(value);
                 } else {
-                    DrawAll();
-                    continue;
+                    sc_memoryInit();
+                    std::cout << "Incorrect file format!" << std::endl;
+                    std::cout << "Press enter key to continue..." << std::endl;
+                    std::cin.ignore(
+                            std::numeric_limits<std::streamsize>::max(), '\n');
+                    getchar();
                 }
                 sc_regInit();
                 sc_accumulatorInit();

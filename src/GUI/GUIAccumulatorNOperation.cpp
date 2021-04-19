@@ -15,7 +15,7 @@ int MySimpleComputer::DrawOperation()
     int error = 0;
     int command, operand;
     error += mt_gotoXY(8, 68);
-    if (decodeCommand(memory[selector], command, operand) == -1) {
+    if (decodeCommand(memory[selector], command, operand) < 0) {
         std::cout << "+00 : 00";
     } else {
         printf("+%02X", command);

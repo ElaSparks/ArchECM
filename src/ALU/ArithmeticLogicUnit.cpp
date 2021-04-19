@@ -41,7 +41,7 @@ void ArithmeticLogicUnit::ALU(int command, int operand)
     else if (command == 0x42)
         commandJZ(operand);
     else if (command == 0x43)
-        commandHalt();
+        commandHalt(0);
     else if (command == 0x57)
         commandJNC(operand);
 }

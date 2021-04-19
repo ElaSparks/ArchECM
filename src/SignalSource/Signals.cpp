@@ -29,7 +29,11 @@ void MySimpleComputer::runHandler(int signal)
             pc->DrawAll();
             return;
         }
-        ++globalPC->instructionCounter;         // goto next
+        if (!globalPC->jump) {
+            ++globalPC->instructionCounter; // goto next
+        } else {
+            globalPC->jump = false;
+        }
         if (timerTMP.it_interval.tv_sec == 0) { // is step?
             MySimpleComputer* pc = globalPC;
             stopHandler(0);

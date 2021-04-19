@@ -8,7 +8,9 @@
 
 #include "MyReadKey.h"
 #include <bits/stdc++.h>
+#include <fstream>
 #include <signal.h>
+#include <sstream>
 #include <sys/time.h>
 
 class ArithmeticLogicUnit : protected MyReadKey {
@@ -25,11 +27,12 @@ private:
     void commandJNEG(int operand);   // goto acc<0
     void commandJZ(int operand);     // goto acc==0
     void commandJNC(int operand);    // goto OVERFLOW==0
-    void commandHalt();              // stop + goto zero mem pos
+    void commandHalt(int operand);   // stop + goto zero mem pos
 
 protected:
     int memory[100]{};                   // ram of the computer
     int accumulator{};                   // result of operation
+    bool jump = false;                   // flag jump
     std::bitset<5> flags{};              // flags from current operation
     std::bitset<5> flagsLO{};            // flags from last operation
     int instructionCounter = 0;          // number of the running command
@@ -47,7 +50,9 @@ protected:
 
     void ALU(int command, int operand);
     void controlUnit();
-    int translate(const std::string& filename);
+    int letterMemory(char symbol);
+    int translateASM(const std::string& filename);
+    int translateBAS(const std::string& filename);
 
 public:
     ArithmeticLogicUnit();

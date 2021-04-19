@@ -3,7 +3,6 @@
 
 #include "ArithmeticLogicUnit.h"
 #include "MyBigChars.h"
-#include <fstream>
 
 class MySimpleComputer : protected MyBigChars, protected ArithmeticLogicUnit {
 private:
