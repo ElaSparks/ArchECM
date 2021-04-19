@@ -2,31 +2,26 @@
 #include <sstream>
 int MySimpleComputer::DrawBigChar()
 {
-    int value, error = 0, check = 0;
-    if (sc_memoryGet(instructionCounter, value) != -1) {
+    int value;
+    int error = 0, check = 0;
+    if (sc_memoryGet(selector, value) != -1) {
         std::stringstream stream;
         if (value >> 14 & 1) { // not a command
             if (value < 0) {
                 check = -1;
             }
-            stream << std::setw(4) << std::setfill('0') << std::hex
-                   << std::abs(value);
         } else {
             int command = 0, operand = 0;
-            if (decodeCommand(value, command, operand) != -1) {
-                stream << std::setw(2) << std::setfill('0') << std::hex
-                       << command;
-                stream << std::setw(2) << std::setfill('0') << std::hex
-                       << operand;
+            if (decodeCommand(value, command, operand) == 0) {
                 check = 1;
             } else {
                 if (value < 0) {
                     check = -1;
                 }
-                stream << std::setw(4) << std::setfill('0') << std::hex
-                       << std::abs(value);
             }
         }
+        stream << std::setw(4) << std::setfill('0') << std::hex
+               << std::abs(value);
         std::string result(stream.str());
         bc_printbigchar(
                 bc_initbigchar(check == 1 ? '+' : ((check == -1) ? '-' : ' ')),

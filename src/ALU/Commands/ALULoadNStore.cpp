@@ -1,9 +1,20 @@
 #include "../../../include/ArithmeticLogicUnit.h"
-int ArithmeticLogicUnit::commandLoad(int operand)
+void ArithmeticLogicUnit::commandLoad(int operand)
 {
-    return 0;
+    int value, request;
+    request = sc_memoryGet(operand, value);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+        return;
+    }
+    sc_accumulatorSet(value);
 }
-int ArithmeticLogicUnit::commandStore(int operand)
+void ArithmeticLogicUnit::commandStore(int operand)
 {
-    return 0;
+    int value, request;
+    value = accumulator;
+    request = sc_memorySet(operand, value);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+    }
 }

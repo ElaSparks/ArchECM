@@ -16,33 +16,32 @@ ArithmeticLogicUnit::ArithmeticLogicUnit()
              0x57})
 {
 }
-int ArithmeticLogicUnit::ALU(int command, int operand)
+void ArithmeticLogicUnit::ALU(int command, int operand)
 {
-    //    if (command == 0x10)
-    //        return commandRead(operand);
-    //    else if (command == 0x11)
-    //        return commandWrite(operand);
-    //    else if (command == 0x20)
-    //        return commandLoad(operand);
-    //    else if (command == 0x21)
-    //        return commandStore(operand);
-    //    else if (command == 0x30)
-    //        return commandAdd(operand);
-    //    else if (command == 0x31)
-    //        return commandSub(operand);
-    //    else if (command == 0x32)
-    //        return commandDivide(operand);
-    //    else if (command == 0x33)
-    //        return commandMul(operand);
-    //    else if (command == 0x40)
-    //        return commandJump(operand);
-    //    else if (command == 0x41)
-    //        return commandJNEG(operand);
-    //    else if (command == 0x42)
-    //        return commandJZ(operand);
-    //    else if (command == 0x43)
-    //        return commandHalt();
-    //    else if (command == 0x57)
-    //        return commandJNC(operand);
-    //    return -1;
+    if (command == 0x10)
+        commandRead(operand);
+    else if (command == 0x11)
+        commandWrite(operand);
+    else if (command == 0x20)
+        commandLoad(operand);
+    else if (command == 0x21)
+        commandStore(operand);
+    else if (command == 0x30)
+        commandAdd(operand);
+    else if (command == 0x31)
+        commandSub(operand);
+    else if (command == 0x32)
+        commandDivide(operand);
+    else if (command == 0x33)
+        commandMul(operand);
+    else if (command == 0x40)
+        commandJump(operand);
+    else if (command == 0x41)
+        commandJNEG(operand);
+    else if (command == 0x42)
+        commandJZ(operand);
+    else if (command == 0x43)
+        commandHalt(0);
+    else if (command == 0x57)
+        commandJNC(operand);
 }

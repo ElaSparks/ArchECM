@@ -1,21 +1,44 @@
 #include "../../../include/ArithmeticLogicUnit.h"
-int ArithmeticLogicUnit::commandAdd(int operand)
+void ArithmeticLogicUnit::commandAdd(int operand)
 {
-    return 0;
+    int memoryValue, request;
+    request = sc_memoryGet(operand, memoryValue);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+        return;
+    }
+    sc_accumulatorSet((accumulator + memoryValue));
 }
-int ArithmeticLogicUnit::commandSub(int operand)
+void ArithmeticLogicUnit::commandSub(int operand)
 {
-    return 0;
+    int memoryValue, request;
+    request = sc_memoryGet(operand, memoryValue);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+        return;
+    }
+    sc_accumulatorSet((accumulator - memoryValue));
 }
-int ArithmeticLogicUnit::commandDivide(int operand)
+void ArithmeticLogicUnit::commandDivide(int operand)
 {
-    return 0;
+    int memoryValue, request;
+    request = sc_memoryGet(operand, memoryValue);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+        return;
+    }
+    if (memoryValue == 0) {
+        sc_regSet(DIVISION_BY_ZERO, 1);
+    } else
+        sc_accumulatorSet((accumulator / memoryValue));
 }
-int ArithmeticLogicUnit::commandMul(int operand)
+void ArithmeticLogicUnit::commandMul(int operand)
 {
-    return 0;
-}
-int ArithmeticLogicUnit::commandJNC(int operand)
-{
-    return 0;
+    int memoryValue, request;
+    request = sc_memoryGet(operand, memoryValue);
+    if (request < 0) {
+        sc_regSet(std::abs(request), 1);
+        return;
+    }
+    sc_accumulatorSet((accumulator * memoryValue));
 }

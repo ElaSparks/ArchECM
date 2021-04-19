@@ -1,17 +1,33 @@
 #include "../../../include/ArithmeticLogicUnit.h"
-int ArithmeticLogicUnit::commandJump(int operand)
+void ArithmeticLogicUnit::commandJump(int operand)
 {
-    return 0;
+    sc_instructionCounterSet(operand);
+    jump = true;
 }
-int ArithmeticLogicUnit::commandJNEG(int operand)
+void ArithmeticLogicUnit::commandJNEG(int operand)
 {
-    return 0;
+    if (accumulator < 0) {
+        sc_instructionCounterSet(operand);
+        jump = true;
+    }
 }
-int ArithmeticLogicUnit::commandJZ(int operand)
+void ArithmeticLogicUnit::commandJZ(int operand)
 {
-    return 0;
+    if (accumulator == 0) {
+        sc_instructionCounterSet(operand);
+        jump = true;
+    }
 }
-int ArithmeticLogicUnit::commandHalt()
+void ArithmeticLogicUnit::commandJNC(int operand)
 {
-    return 0;
+    if (flagsLO[OVERFLOW - 1] == 0) {
+        sc_instructionCounterSet(operand);
+        jump = true;
+    }
+}
+void ArithmeticLogicUnit::commandHalt(int operand)
+{
+    sc_regSet(IGNORE_IMPULSE, 1);
+    sc_instructionCounterSet(operand);
+    jump = true;
 }
