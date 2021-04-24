@@ -1,8 +1,9 @@
 #include "../../include/ArithmeticLogicUnit.h"
 /**
  * @author ElaSparks
+ * @file LetterEncode.cpp
  * @param symbol - name of variable
- * @return error or position of variable in memory
+ * @return Error or position of variable in memory
  */
 int ArithmeticLogicUnit::letterMemory(char symbol)
 {

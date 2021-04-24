@@ -37,4 +37,6 @@ add_executable(ArchECM
         src/ALU/Commands/ALUArithmetic.cpp
         src/ALU/Commands/ALUControlTransfer.cpp
         src/ALU/ControlUnit.cpp
-        src/Encode/TranslateASM.cpp src/Encode/TranslateBAS.cpp src/Encode/LetterEncode.cpp)
+        src/Encode/TranslateASM.cpp
+        src/Encode/TranslateBAS.cpp
+        src/Encode/LetterEncode.cpp)

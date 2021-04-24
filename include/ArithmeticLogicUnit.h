@@ -5,6 +5,10 @@
 #define OUT_OF_MEMORY 3
 #define IGNORE_IMPULSE 4
 #define WRONG_COMMAND 5
+#define debug std::cout << "+++" << std::endl
+#define breakpoint \
+    getchar();     \
+    getchar()
 
 #include "MyReadKey.h"
 #include <bits/stdc++.h>
@@ -12,7 +16,6 @@
 #include <signal.h>
 #include <sstream>
 #include <sys/time.h>
-
 class ArithmeticLogicUnit : protected MyReadKey {
 private:
     void commandRead(int operand);   // read from console into mem
