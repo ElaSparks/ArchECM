@@ -39,4 +39,5 @@ add_executable(ArchECM
         src/ALU/ControlUnit.cpp
         src/Encode/TranslateASM.cpp
         src/Encode/TranslateBAS.cpp
-        src/Encode/LetterEncode.cpp)
+        src/Encode/BasicHandler/LetterEncode.cpp
+        src/Encode/BasicHandler/JuxtaposeCode.cpp)

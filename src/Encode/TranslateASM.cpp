@@ -1,11 +1,10 @@
 #include "../../include/ArithmeticLogicUnit.h"
 /**
- * @author ElaSparks
- * @param filename - name of the asm program
- * @example NAME.asm
- * @example HOME_PROGRAM_DIR/ANY_FOLDERS/NAME.asm
+ * This function translates assembly code into simple computer commands and
+ * loads them into memory.
+ * @file TranslateASM.cpp
+ * @param filename - name of the file where assembler code located
  * @return result of encoding
- * @example successful=0 or error=-1
  */
 int ArithmeticLogicUnit::translateASM(const std::string& filename)
 {
@@ -53,9 +52,9 @@ int ArithmeticLogicUnit::translateASM(const std::string& filename)
                     commandNumber = 0x57;
                 } else // something else
                     return -1;
-                int value;
-                encodeCommand(commandNumber, operand, value);
-                sc_memorySet(number, value);
+                int value; // contain encoded command
+                encodeCommand(commandNumber, operand, value); // form a command
+                sc_memorySet(number, value); // loads into memory
             }
             return 0;
         }

@@ -1,4 +1,4 @@
-#include "../../include/ArithmeticLogicUnit.h"
+#include "../../../include/ArithmeticLogicUnit.h"
 /**
  * @author ElaSparks
  * @file LetterEncode.cpp

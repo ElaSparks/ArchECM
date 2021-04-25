@@ -6,6 +6,7 @@
 #define IGNORE_IMPULSE 4
 #define WRONG_COMMAND 5
 #define debug std::cout << "+++" << std::endl
+#define inspect(x) std::cout << #x << "=" << x << std::endl;
 #define breakpoint \
     getchar();     \
     getchar()
@@ -54,6 +55,7 @@ protected:
     void ALU(int command, int operand);
     void controlUnit();
     int letterMemory(char symbol);
+    std::vector<int> juxtaposeCode(const std::string& filename);
     int translateASM(const std::string& filename);
     int translateBAS(const std::string& filename);
 
