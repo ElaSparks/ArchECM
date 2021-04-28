@@ -1,15 +1,10 @@
 #include "../../include/MySimpleComputer.h"
-int MySimpleComputer::DrawAccumulator()
-{
-    int error = 0;
-    error += move(2, 69);
-    if (accumulator < 0) {
-        printf("-");
-    } else
-        printf("+");
-    printf("%04X", abs(accumulator));
-    return error;
-}
+/**
+ * The function draws on the screen the number of the current operation that is
+ * being performed
+ * @file GUIOperation.cpp
+ * @return Operation result
+ */
 int MySimpleComputer::DrawOperation()
 {
     int error = 0;

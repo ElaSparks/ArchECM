@@ -1,4 +1,9 @@
 #include "../../include/MySimpleComputer.h"
+/**
+ * The function draws on the screen the contents of the flags register
+ * @file GUIFlags.cpp
+ * @return Operation result
+ */
 int MySimpleComputer::DrawFlags()
 {
     int error = 0;
@@ -19,11 +24,4 @@ int MySimpleComputer::DrawFlags()
         return -1;
     }
     return 0;
-}
-int MySimpleComputer::DrawInstruction()
-{
-    int error = 0;
-    error += move(5, 70);
-    printf("%04X", instructionCounter);
-    return error;
 }

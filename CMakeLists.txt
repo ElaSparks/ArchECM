@@ -20,13 +20,13 @@ add_executable(ArchECM
         src/SimpleComputerSource/SimpleComputerMemory.cpp
         src/ALU/ALURegNAccumHandler.cpp
         src/GUI/GUIBigChar.cpp
-        src/GUI/GUIFramesNNames.cpp
+        src/GUI/GUIFrames.cpp
         src/MainActivity.cpp
-        src/GUI/GUIFlagsNInstruction.cpp
+        src/GUI/GUIFlags.cpp
         src/GUI/GUIMemory.cpp
         src/GUI/GUIAll.cpp
         src/SignalSource/Signals.cpp
-        src/GUI/GUIAccumulatorNOperation.cpp
+        src/GUI/GUIAccumulator.cpp
         src/ALU/ArithmeticLogicUnit.cpp
         include/ArithmeticLogicUnit.h
         src/TermSource/TermEcho.cpp
@@ -40,4 +40,9 @@ add_executable(ArchECM
         src/Encode/TranslateASM.cpp
         src/Encode/TranslateBAS.cpp
         src/Encode/BasicHandler/LetterEncode.cpp
-        src/Encode/BasicHandler/JuxtaposeCode.cpp src/TermSource/TermScreenSize.cpp src/TermSource/TermColors.cpp)
+        src/Encode/BasicHandler/JuxtaposeCode.cpp
+        src/TermSource/TermScreenSize.cpp
+        src/TermSource/TermColors.cpp
+        src/GUI/GUINames.cpp
+        src/GUI/GUIOperation.cpp
+        src/GUI/GUIInstruction.cpp)

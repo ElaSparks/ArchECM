@@ -1,5 +1,10 @@
 #include "../../include/MySimpleComputer.h"
-#include <sstream>
+/**
+ * The function takes the contents of the selected cell and displays it
+ * character by character in the "BigChar" format
+ * @file GUIBigChar.cpp
+ * @return Operation result
+ */
 int MySimpleComputer::DrawBigChar()
 {
     int value;

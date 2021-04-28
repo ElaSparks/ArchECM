@@ -1,4 +1,9 @@
 #include "../../include/MySimpleComputer.h"
+/**
+ * The function displays the contents of all memory cells
+ * @file GUIMemory.cpp
+ * @return Operation result
+ */
 int MySimpleComputer::DrawMemory()
 {
     int value, command = 0, operand = 0;

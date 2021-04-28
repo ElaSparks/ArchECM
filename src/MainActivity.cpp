@@ -18,26 +18,23 @@ void MySimpleComputer::runComputer()
             switch (key) {
             case key_load: {
                 std::string value;
+                int expect = 1;
                 std::cout << "Load. File name + file extension: ";
                 std::cin >> value;
                 if (value.substr(value.length() - 3, 3) == "asm") {
-                    std::cout
-                            << (translateASM(value) == -1 ? "Error"
-                                                          : "Successful")
-                            << std::endl;
+                    expect = translateASM(value);
                 } else if (value.substr(value.length() - 3, 3) == "bas") {
-                    std::cout
-                            << (translateBAS(value) == -1 ? "Error"
-                                                          : "Successful")
-                            << std::endl;
+                    expect = translateBAS(value);
                 } else if (value.substr(value.length() - 2, 2) == ".o") {
-                    std::cout
-                            << (sc_memoryLoad(value) == -1 ? "Error"
-                                                           : "Successful")
-                            << std::endl;
+                    expect = sc_memoryLoad(value);
                 } else {
                     sc_memoryInit();
                     std::cout << "Incorrect file format!" << std::endl;
+                }
+                if (expect == -1) {
+                    std::cout << "Error" << std::endl;
+                } else if (expect == 0) {
+                    std::cout << "Successful" << std::endl;
                 }
                 std::cout << "Press enter key to continue..." << std::endl;
                 std::cin.ignore(
