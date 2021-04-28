@@ -1,20 +1,32 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Broadcasting the LOAD Command. Loading into an accumulator a value from a
+ * specified memory address.
+ * @file ALULoadNStore.cpp
+ * @param operand - memory address
+ */
 void ArithmeticLogicUnit::commandLoad(int operand)
 {
     int value, request;
-    request = sc_memoryGet(operand, value);
+    request = memoryGet(operand, value);
     if (request < 0) {
-        sc_regSet(std::abs(request), 1);
+        registerSet(std::abs(request), 1);
         return;
     }
-    sc_accumulatorSet(value);
+    accumulatorSet(value);
 }
+/**
+ * Broadcasting the STORE Command. Unloads a value from the accumulator at the
+ * specified memory address.
+ * @file ALULoadNStore.cpp
+ * @param operand - memory address
+ */
 void ArithmeticLogicUnit::commandStore(int operand)
 {
     int value, request;
     value = accumulator;
-    request = sc_memorySet(operand, value);
+    request = memorySet(operand, value);
     if (request < 0) {
-        sc_regSet(std::abs(request), 1);
+        registerSet(std::abs(request), 1);
     }
 }

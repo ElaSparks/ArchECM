@@ -12,7 +12,7 @@ int MyReadKey::rk_mytermregime(
         return -1; // if you can't read the settings for the terminal
     }
 
-    if (regime == 1) { //изменение настроек
+    if (regime == 1) { // change settings
         termSettings.c_lflag |= ICANON;
     } else if (regime == 0) {
         termSettings.c_lflag &= ~ICANON;

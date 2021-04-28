@@ -4,7 +4,7 @@
  * loads them into memory.
  * @file TranslateASM.cpp
  * @param filename - name of the file where assembler code located
- * @return result of encoding
+ * @return Operation result
  */
 int ArithmeticLogicUnit::translateASM(const std::string& filename)
 {
@@ -54,7 +54,7 @@ int ArithmeticLogicUnit::translateASM(const std::string& filename)
                     return -1;
                 int value; // contain encoded command
                 encodeCommand(commandNumber, operand, value); // form a command
-                sc_memorySet(number, value); // loads into memory
+                memorySet(number, value); // loads into memory
             }
             return 0;
         }

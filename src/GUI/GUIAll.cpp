@@ -1,9 +1,15 @@
 #include "../../include/MySimpleComputer.h"
+/**
+ * Draw all GUI of the simple computer
+ * @file GUIALL.cpp
+ * @return A value indicating the result of an attempt to render all GUI
+ * elements
+ */
 int MySimpleComputer::DrawAll()
 {
-    mt_setscreensize(25, 84);
-    int error = 0;
-    mt_clrscr();
+    setScreenSize(25, 84); // resize terminal
+    int error = 0;         // Errors indicator
+    cleanScreen();         // clean screen
     error += DrawBigChar();
     error += DrawFrames();
     error += DrawNames();
@@ -12,8 +18,8 @@ int MySimpleComputer::DrawAll()
     error += DrawMemory();
     error += DrawAccumulator();
     error += DrawOperation();
-    mt_gotoXY(24, 0);
-    if (error < 0) {
+    move(24, 0);     // move cursor under frame
+    if (error < 0) { // check for errors
         return -1;
     }
     return 0;

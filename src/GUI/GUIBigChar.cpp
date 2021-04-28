@@ -4,7 +4,7 @@ int MySimpleComputer::DrawBigChar()
 {
     int value;
     int error = 0, check = 0;
-    if (sc_memoryGet(selector, value) != -1) {
+    if (memoryGet(selector, value) != -1) {
         std::stringstream stream;
         if (value >> 14 & 1) { // not a command
             if (value < 0) {
@@ -23,16 +23,16 @@ int MySimpleComputer::DrawBigChar()
         stream << std::setw(4) << std::setfill('0') << std::hex
                << std::abs(value);
         std::string result(stream.str());
-        bc_printbigchar(
-                bc_initbigchar(check == 1 ? '+' : ((check == -1) ? '-' : ' ')),
+        printBigChar(
+                initBigChar(check == 1 ? '+' : ((check == -1) ? '-' : ' ')),
                 14,
                 2,
                 Cyan,
                 Black);
-        bc_printbigchar(bc_initbigchar(result[0]), 14, 11, Cyan, Black);
-        bc_printbigchar(bc_initbigchar(result[1]), 14, 20, Cyan, Black);
-        bc_printbigchar(bc_initbigchar(result[2]), 14, 29, Cyan, Black);
-        bc_printbigchar(bc_initbigchar(result[3]), 14, 38, Cyan, Black);
+        printBigChar(initBigChar(result[0]), 14, 11, Cyan, Black);
+        printBigChar(initBigChar(result[1]), 14, 20, Cyan, Black);
+        printBigChar(initBigChar(result[2]), 14, 29, Cyan, Black);
+        printBigChar(initBigChar(result[3]), 14, 38, Cyan, Black);
         if (error < 0) {
             return -1;
         }

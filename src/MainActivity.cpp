@@ -1,14 +1,18 @@
 #include "../include/MySimpleComputer.h"
-
+/**
+ * The main function of a simple computer, which interacts with the user and
+ * processes his actions
+ * @file MainActivity.cpp
+ */
 void MySimpleComputer::runComputer()
 {
     keys key{};
-    setbuf(stdout, nullptr);
-    int impulse = 1;
-    sc_regSet(IGNORE_IMPULSE, 1);
-    DrawAll();
-    while (key != key_quit) {
-        sc_regGet(IGNORE_IMPULSE, impulse);
+    setbuf(stdout, nullptr);              // disable the buffer at printf
+    int impulse = 1;                      // contain impulse register value
+    registerSet(IGNORE_IMPULSE, impulse); // set initial value
+    DrawAll();                            // draw all interface
+    while (key != key_quit) {             // while quit button isn`t pressed
+        registerGet(IGNORE_IMPULSE, impulse);
         if (impulse == 1) {
             rk_readkey(key);
             switch (key) {
@@ -17,23 +21,32 @@ void MySimpleComputer::runComputer()
                 std::cout << "Load. File name + file extension: ";
                 std::cin >> value;
                 if (value.substr(value.length() - 3, 3) == "asm") {
-                    translateASM(value);
+                    std::cout
+                            << (translateASM(value) == -1 ? "Error"
+                                                          : "Successful")
+                            << std::endl;
                 } else if (value.substr(value.length() - 3, 3) == "bas") {
-                    translateBAS(value);
+                    std::cout
+                            << (translateBAS(value) == -1 ? "Error"
+                                                          : "Successful")
+                            << std::endl;
                 } else if (value.substr(value.length() - 2, 2) == ".o") {
-                    sc_memoryLoad(value);
+                    std::cout
+                            << (sc_memoryLoad(value) == -1 ? "Error"
+                                                           : "Successful")
+                            << std::endl;
                 } else {
                     sc_memoryInit();
                     std::cout << "Incorrect file format!" << std::endl;
-                    std::cout << "Press enter key to continue..." << std::endl;
-                    std::cin.ignore(
-                            std::numeric_limits<std::streamsize>::max(), '\n');
-                    getchar();
                 }
+                std::cout << "Press enter key to continue..." << std::endl;
+                std::cin.ignore(
+                        std::numeric_limits<std::streamsize>::max(), '\n');
+                getchar();
                 sc_regInit();
                 sc_accumulatorInit();
                 instructionCounter = 0;
-                sc_regSet(IGNORE_IMPULSE, 1);
+                registerSet(IGNORE_IMPULSE, 1);
                 break;
             }
             case key_save: {
@@ -49,7 +62,8 @@ void MySimpleComputer::runComputer()
                 sc_memoryInit();
                 sc_regInit();
                 sc_accumulatorInit();
-                sc_regSet(IGNORE_IMPULSE, 1);
+                instructionCounterSet(0);
+                registerSet(IGNORE_IMPULSE, 1);
                 break;
             case key_up:
                 if (selector / 10 == 0) {
@@ -89,27 +103,27 @@ void MySimpleComputer::runComputer()
                 int value = 0;
                 std::cout << "Value of memory: ";
                 std::cin >> value;
-                sc_memorySet(selector, value);
+                memorySet(selector, value);
                 break;
             }
             case key_f5: {
                 int value = 0;
                 std::cout << "Value of accumulator: ";
                 std::cin >> value;
-                sc_accumulatorSet(value);
+                accumulatorSet(value);
                 break;
             }
             case key_f6: {
                 int value = 0;
                 std::cout << "InstructionCounter position: ";
                 std::cin >> value;
-                sc_instructionCounterSet(value);
+                instructionCounterSet(value);
                 break;
             }
             case key_quit:
-                mt_clrscr();
+                cleanScreen(); // together with shutdown, we clear the screen
                 continue;
-            case key_other:
+            case key_other: // other buttons are not processed
                 break;
             }
             DrawAll();

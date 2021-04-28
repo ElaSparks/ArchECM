@@ -5,16 +5,16 @@ int MySimpleComputer::DrawFlags()
     int value = 0;
     std::string flagNames = "OZMIW";
     for (int i = 0; i < flagNames.length(); ++i) {
-        error += mt_gotoXY(11, 68 + 2 * i);
-        sc_regGet(i + 1, value);
+        error += move(11, 68 + 2 * i);
+        registerGet(i + 1, value);
         if (value) {
-            mt_setbgcolor(Red);
+            setBackgroundColor(Red);
         } else {
-            mt_setbgcolor(Reset);
+            setBackgroundColor(Reset);
         }
         printf("%c", flagNames[i]);
     }
-    mt_setbgcolor(Reset);
+    setBackgroundColor(Reset);
     if (error < 0) {
         return -1;
     }
@@ -23,7 +23,7 @@ int MySimpleComputer::DrawFlags()
 int MySimpleComputer::DrawInstruction()
 {
     int error = 0;
-    error += mt_gotoXY(5, 70);
+    error += move(5, 70);
     printf("%04X", instructionCounter);
     return error;
 }

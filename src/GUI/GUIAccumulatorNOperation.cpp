@@ -2,7 +2,7 @@
 int MySimpleComputer::DrawAccumulator()
 {
     int error = 0;
-    error += mt_gotoXY(2, 69);
+    error += move(2, 69);
     if (accumulator < 0) {
         printf("-");
     } else
@@ -14,7 +14,7 @@ int MySimpleComputer::DrawOperation()
 {
     int error = 0;
     int command, operand;
-    error += mt_gotoXY(8, 68);
+    error += move(8, 68);
     if (decodeCommand(memory[selector], command, operand) < 0) {
         std::cout << "+00 : 00";
     } else {

@@ -1,4 +1,8 @@
 #include "../../include/ArithmeticLogicUnit.h"
+/**
+ * The constructor initializes all available commands
+ * @file ArithmeticLogicUnit.cpp
+ */
 ArithmeticLogicUnit::ArithmeticLogicUnit()
     : commands(
             {0x10,
@@ -16,6 +20,12 @@ ArithmeticLogicUnit::ArithmeticLogicUnit()
              0x57})
 {
 }
+/**
+ * The function redirects to execute a specific command
+ * @file ArithmeticLogicUnit.cpp
+ * @param command - command to execute
+ * @param operand - the object on which a machine instruction is being executed
+ */
 void ArithmeticLogicUnit::ALU(int command, int operand)
 {
     if (command == 0x10)

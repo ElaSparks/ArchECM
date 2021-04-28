@@ -6,11 +6,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 
 add_executable(ArchECM
         src/main.cpp
-        src/TermSource/MyTerm.cpp
-        include/MyTerm.h
-        src/BigCharSouce/MyBigChars.cpp
-        include/MyBigChars.h
-        src/BigCharSouce/bigCharInit.cpp
+        src/TermSource/TermDesign.cpp
+        include/TermDesign.h
+        src/BigCharSouce/BigChars.cpp
+        include/BigChars.h
+        src/BigCharSouce/BigCharInit.cpp
         src/TermSource/MyReadKey.cpp
         include/MyReadKey.h
         src/TermSource/TermRegime.cpp
@@ -40,4 +40,4 @@ add_executable(ArchECM
         src/Encode/TranslateASM.cpp
         src/Encode/TranslateBAS.cpp
         src/Encode/BasicHandler/LetterEncode.cpp
-        src/Encode/BasicHandler/JuxtaposeCode.cpp)
+        src/Encode/BasicHandler/JuxtaposeCode.cpp src/TermSource/TermScreenSize.cpp src/TermSource/TermColors.cpp)

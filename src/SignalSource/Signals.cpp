@@ -9,7 +9,7 @@ void MySimpleComputer::stopHandler(int signal)
         globalPC->newTimer.it_interval.tv_usec = 0;
         globalPC->newTimer.it_value.tv_sec = 0;
         globalPC->newTimer.it_value.tv_usec = 0; // disable timer
-        globalPC->sc_regSet(IGNORE_IMPULSE, 1);
+        globalPC->registerSet(IGNORE_IMPULSE, 1);
         globalPC->rk_switchecho(); // enable output symbols
         setitimer(ITIMER_REAL, &globalPC->newTimer, &globalPC->oldTimer);
     }
@@ -50,7 +50,7 @@ void MySimpleComputer::oneStep()
 {
     rk_switchecho(); // disable output symbol
     globalPC = this;
-    sc_regSet(IGNORE_IMPULSE, 0); // disable switch key body
+    registerSet(IGNORE_IMPULSE, 0); // disable switch key body
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 0; // set timer
     newTimer.it_interval.tv_usec = 0;
@@ -62,7 +62,7 @@ void MySimpleComputer::runEachMemory()
 {
     rk_switchecho(); // disable output symbol
     globalPC = this;
-    sc_regSet(IGNORE_IMPULSE, 0); // disable switch key body
+    registerSet(IGNORE_IMPULSE, 0); // disable switch key body
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 1; // set timer
     newTimer.it_interval.tv_usec = 0;

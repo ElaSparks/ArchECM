@@ -17,45 +17,52 @@
 #include <signal.h>
 #include <sstream>
 #include <sys/time.h>
+/**
+ * A class containing the main set of variables and functions that reflect the
+ * structure of a computer, the principle of operation and interaction with a
+ * computer at the physical level
+ * @author ElaSparks
+ */
 class ArithmeticLogicUnit : protected MyReadKey {
 private:
-    void commandRead(int operand);   // read from console into mem
-    void commandWrite(int operand);  // output mem value
-    void commandLoad(int operand);   // from mem to acc
-    void commandStore(int operand);  // from acc to mem
-    void commandAdd(int operand);    // acc+mem
-    void commandSub(int operand);    // acc-mem
-    void commandDivide(int operand); // acc/mem
-    void commandMul(int operand);    // acc*mem
-    void commandJump(int operand);   // goto
-    void commandJNEG(int operand);   // goto acc<0
-    void commandJZ(int operand);     // goto acc==0
-    void commandJNC(int operand);    // goto OVERFLOW==0
-    void commandHalt(int operand);   // stop + goto zero mem pos
+    void commandRead(int operand);
+    void commandWrite(int operand);
+    void commandLoad(int operand);
+    void commandStore(int operand);
+    void commandAdd(int operand);
+    void commandSub(int operand);
+    void commandDivide(int operand);
+    void commandMul(int operand);
+    void commandJump(int operand);
+    void commandJNEG(int operand);
+    void commandJZ(int operand);
+    void commandJNC(int operand);
+    void commandHalt(int operand);
+
+    void ALU(int command, int operand);
+    int letterMemory(char symbol);
+    std::vector<int> juxtaposeCode(const std::string& filename);
 
 protected:
-    int memory[100]{};                   // ram of the computer
+    int memory[100]{};                   // computer memory
     int accumulator{};                   // result of operation
-    bool jump = false;                   // flag jump
-    std::bitset<5> flags{};              // flags from current operation
-    std::bitset<5> flagsLO{};            // flags from last operation
+    bool jump = false;                   // disable iteration if jump
+    std::bitset<5> flags{};              // flags for current operation
+    std::bitset<5> flagsLO{};            // flags for last operation
     int instructionCounter = 0;          // number of the running command
     const std::vector<int> commands;     // all commands of assembler
     struct itimerval newTimer, oldTimer; // iteration call timers
 
-    int sc_regSet(int reg, int value);         // set registers
-    int sc_regGet(int reg, int& value);        // get registers
-    int sc_accumulatorSet(int value);          // set accumulator value
-    int sc_instructionCounterSet(int address); // set iC value
-    int sc_memorySet(int address, int value);  // set mem value
-    int sc_memoryGet(int address, int& value); // get mem value
+    int accumulatorSet(int value);
+    int registerSet(int reg, int value);
+    int registerGet(int reg, int& value);
+    int memorySet(int address, int value);
+    int memoryGet(int address, int& value);
+    int instructionCounterSet(int address);
     int encodeCommand(int command, int operand, int& value);
     int decodeCommand(int value, int& command, int& operand);
 
-    void ALU(int command, int operand);
     void controlUnit();
-    int letterMemory(char symbol);
-    std::vector<int> juxtaposeCode(const std::string& filename);
     int translateASM(const std::string& filename);
     int translateBAS(const std::string& filename);
 

@@ -3,7 +3,7 @@
  * This function translates basic code into assembly analog.
  * @file TranslateBAS.cpp
  * @param filename - name of the file where basic code located
- * @return Result of operation
+ * @return Operation result
  */
 int ArithmeticLogicUnit::translateBAS(const std::string& filename)
 {
@@ -45,6 +45,8 @@ int ArithmeticLogicUnit::translateBAS(const std::string& filename)
                     }
                 } else if (command == "GOTO") { // is OUTPUT command?
                     stringStream >> address;    // get address
+                    if (address / 10 < 1 || address / 10 > compare.size())
+                        return -1;
                     out << " JUMP " << compare[address / 10 - 1] << "\n";
                 } else if (command == "IF") { // is OUTPUT command?
                     stringStream >> variable; // get variable
@@ -63,6 +65,8 @@ int ArithmeticLogicUnit::translateBAS(const std::string& filename)
                         stringStream.str(
                                 fileLine.substr(fileLine.rfind("GOTO ") + 5));
                         stringStream >> address;
+                        if (address / 10 < 1 || address / 10 > compare.size())
+                            return -1;
                         out << compare[address / 10 - 1] << "\n";
                     }
                 } else if (command == "LET") { // is OUTPUT command?

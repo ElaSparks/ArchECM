@@ -1,5 +1,12 @@
-#include "../../include/MyBigChars.h"
-unsigned long long MyBigChars::bc_initbigchar(char value)
+#include "../../include/BigChars.h"
+/**
+ * Some database containing the equivalent of characters as BigChar
+ * @file BigCharInit.cpp
+ * @param value - the symbol to be represented as "BigChar"
+ * @return a ulonglong value containing a "BigChar" representation of an 8x8
+ * grid of zeros and ones
+ */
+unsigned long long BigChars::initBigChar(char value)
 {
     switch (tolower(value)) {
     case '+': {

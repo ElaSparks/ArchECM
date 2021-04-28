@@ -2,18 +2,18 @@
 #define MYSIMPLECOMPUTER_H
 
 #include "ArithmeticLogicUnit.h"
-#include "MyBigChars.h"
+#include "BigChars.h"
 
-class MySimpleComputer : protected MyBigChars, protected ArithmeticLogicUnit {
+class MySimpleComputer : protected BigChars, protected ArithmeticLogicUnit {
 private:
-    int selector = 0;
+    int selector = 0;                               // user cursor
     void sc_regInit();                              // clean registers
     void sc_memoryInit();                           // clean memory
     void sc_accumulatorInit();                      // clean accumulator
     int sc_memorySave(const std::string& filename); // save ram in file
     int sc_memoryLoad(const std::string& filename); // load ram from file
     // gui
-    int DrawAll();         // Print all gui elements
+    int DrawAll();
     int DrawFrames();      // Print all frames
     int DrawNames();       // Print names of frame and another text
     int DrawInstruction(); // Print number of execute command
