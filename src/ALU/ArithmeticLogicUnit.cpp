@@ -17,7 +17,8 @@ ArithmeticLogicUnit::ArithmeticLogicUnit()
              0x41,
              0x42,
              0x43,
-             0x57})
+             0x57,
+             0x77})
 {
 }
 /**
@@ -54,4 +55,6 @@ void ArithmeticLogicUnit::ALU(int command, int operand)
         commandHalt(0);
     else if (command == 0x57)
         commandJNC(operand);
+    else if (command == 0x77)
+        commandMOVEAX(operand);
 }

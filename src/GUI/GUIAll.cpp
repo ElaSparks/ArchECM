@@ -7,7 +7,7 @@
  */
 int MySimpleComputer::DrawAll()
 {
-    setScreenSize(25, 84); // resize terminal
+    setScreenSize(27, 84); // resize terminal
     int error = 0;         // Errors indicator
     cleanScreen();         // clean screen
     error += DrawBigChar();

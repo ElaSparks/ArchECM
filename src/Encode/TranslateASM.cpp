@@ -50,11 +50,20 @@ int ArithmeticLogicUnit::translateASM(const std::string& filename)
                     commandNumber = 0x43;
                 } else if (command == "JNC") { // is JNC?
                     commandNumber = 0x57;
+                } else if (command == "MOVEAX") { // is mov eax?
+                    commandNumber = 0x77;
                 } else // something else
                     return -1;
-                int value; // contain encoded command
-                encodeCommand(commandNumber, operand, value); // form a command
-                memorySet(number, value); // loads into memory
+                int value;       // contain encoded command
+                int request = 0; // contain result of encode;
+                request = encodeCommand(
+                        commandNumber,
+                        operand,
+                        value); // form a command loads into memory
+                if (request < 0) {
+                    return -1;
+                }
+                memorySet(number, value);
             }
             return 0;
         }

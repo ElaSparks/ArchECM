@@ -45,4 +45,4 @@ add_executable(ArchECM
         src/TermSource/TermColors.cpp
         src/GUI/GUINames.cpp
         src/GUI/GUIOperation.cpp
-        src/GUI/GUIInstruction.cpp)
+        src/GUI/GUIInstruction.cpp src/ALU/Commands/ALUMovEax.cpp)

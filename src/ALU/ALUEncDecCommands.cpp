@@ -14,6 +14,20 @@ int ArithmeticLogicUnit::encodeCommand(int command, int operand, int& value)
         == commands.end()) {
         return -WRONG_COMMAND;
     }
+    if (command == 0x77) {
+        if (operand <= 0x3F && operand >= -0x40) {
+            value = command << 7;
+            if (operand < 0) {
+                value |= std::abs(operand);
+                value |= 1 << 6;
+            } else {
+                value |= operand;
+            }
+
+            return 0;
+        }
+        return -OVERFLOW;
+    }
     if ((operand < 0) || (operand > 99)) {
         return -OUT_OF_MEMORY;
     }
@@ -34,6 +48,11 @@ int ArithmeticLogicUnit::decodeCommand(int value, int& command, int& operand)
          == commands.end())
         || (value >> 14 & 1)) {
         return -WRONG_COMMAND;
+    }
+    if (value >> 7 == 0x77) {
+        command = value >> 7;
+        operand = value & 127;
+        return 0;
     }
     if (((value & 127) < 0) || ((value & 127) > 99)) {
         return -OUT_OF_MEMORY;

@@ -33,6 +33,7 @@ private:
     void commandSub(int operand);
     void commandDivide(int operand);
     void commandMul(int operand);
+    void commandMOVEAX(int operand);
     void commandJump(int operand);
     void commandJNEG(int operand);
     void commandJZ(int operand);
