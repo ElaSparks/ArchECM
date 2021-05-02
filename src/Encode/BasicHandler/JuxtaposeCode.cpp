@@ -15,16 +15,20 @@ std::vector<int> ArithmeticLogicUnit::juxtaposeCode(const std::string& filename)
         std::string command;     // stores the command we received from the file
         std::string fileLine;    // line in file
         std::vector<int> result; // vector of offsets
-        for (int count = 0, number; std::getline(in, fileLine);) {
+        for (int count = 0, rems = 0, number; std::getline(in, fileLine);) {
             std::istringstream stringStream(fileLine); // get line by pieces
             stringStream >> number;                    // get number of command
             stringStream >> command;                   // get command
             if (number < 10 || number > 900 || (number % 10 != 0))
                 return std::vector<int>(); // such command number cannot exist
-            if (number / 10 != result.size() + 1)
+            if (number / 10 != result.size() + 1 + rems)
                 return std::vector<int>(); // numbers are not in order
-            if (command == "REM" || command == "END" || command == "INPUT"
-                || command == "OUTPUT" || command == "GOTO") {
+            if (command == "REM") {
+                ++rems;
+                continue;
+            } else if (
+                    command == "END" || command == "INPUT"
+                    || command == "OUTPUT" || command == "GOTO") {
                 result.push_back(count++);
             } else if (command == "IF") {
                 result.push_back(count);

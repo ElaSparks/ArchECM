@@ -5,6 +5,7 @@
 #define OUT_OF_MEMORY 3
 #define IGNORE_IMPULSE 4
 #define WRONG_COMMAND 5
+#define dataAddress 99
 #define debug std::cout << "+++" << std::endl
 #define inspect(x) std::cout << #x << "=" << x << std::endl;
 #define breakpoint \
@@ -40,9 +41,32 @@ private:
     void commandJNC(int operand);
     void commandHalt(int operand);
 
+    std::string commandIF(
+            const std::string& line,
+            int& startAt,
+            std::vector<int> compare,
+            int rems);
+    std::string commandEND(int& startAt);
+    std::string commandLET(const std::string& line, int& startAt);
+    std::string commandGOTO(
+            const std::string& line,
+            int& startAt,
+            std::vector<int> compare,
+            int rems);
+    std::string commandINPUT(const std::string& line, int& startAt);
+    std::string commandOUTPUT(const std::string& line, int& startAt);
+
+    int getPriority(int operation);
+    int letterAddress(char symbol);
     void ALU(int command, int operand);
-    int letterMemory(char symbol);
+    void deleteAllSpaces(std::string& line);
+    std::queue<std::string> setTokensQueue(char* str);
+    std::string parseLET(std::string line, int& startAt);
     std::vector<int> juxtaposeCode(const std::string& filename);
+    std::string
+    transformToASMExpression(std::queue<std::string> rpn, int& startAt);
+    void
+    replace(std::string& str, const std::string& from, const std::string& to);
 
 protected:
     int memory[100]{};                   // computer memory

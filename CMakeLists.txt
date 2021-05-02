@@ -39,10 +39,22 @@ add_executable(ArchECM
         src/ALU/ControlUnit.cpp
         src/Encode/TranslateASM.cpp
         src/Encode/TranslateBAS.cpp
-        src/Encode/BasicHandler/LetterEncode.cpp
+        src/Encode/BasicHandler/LetterAddress.cpp
         src/Encode/BasicHandler/JuxtaposeCode.cpp
         src/TermSource/TermScreenSize.cpp
         src/TermSource/TermColors.cpp
         src/GUI/GUINames.cpp
         src/GUI/GUIOperation.cpp
-        src/GUI/GUIInstruction.cpp src/ALU/Commands/ALUMovEax.cpp)
+        src/GUI/GUIInstruction.cpp
+        src/ALU/Commands/ALUMovEax.cpp
+        src/Encode/BASCommands/ENDCommand.cpp
+        src/Encode/BASCommands/INPUTCommand.cpp
+        src/Encode/BASCommands/OUTPUTCommand.cpp
+        src/Encode/BASCommands/GOTOCommand.cpp
+        src/Encode/BASCommands/IFCommand.cpp
+        src/Encode/BASCommands/LETCommand.cpp
+        src/Encode/BasicHandler/GetPriority.cpp
+        src/Encode/BasicHandler/StringRefactor.cpp
+        src/Encode/BasicHandler/ParseLET.cpp
+        src/Encode/BasicHandler/FormQueue.cpp
+        src/Encode/BasicHandler/TransformToASMExpression.cpp)
