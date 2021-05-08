@@ -10,9 +10,9 @@ std::string ArithmeticLogicUnit::commandIF(
     if (letterAddr == -1)
         return std::string{};
     std::string type;
-    if (line.find(" == "))
+    if (line.find(" == ") != -1)
         type = " JZ ";
-    else if (line.find(" < "))
+    else if (line.find(" < ") != -1)
         type = " JNEG ";
     else
         return std::string{};
