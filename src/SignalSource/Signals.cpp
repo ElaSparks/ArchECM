@@ -34,7 +34,7 @@ void MySimpleComputer::runHandler(int signal)
         } else {
             globalPC->jump = false;
         }
-        if (timerTMP.it_interval.tv_sec == 0) { // is step?
+        if (timerTMP.it_interval.tv_usec == 0) { // is step?
             MySimpleComputer* pc = globalPC;
             stopHandler(0);
             pc->DrawAll();
@@ -54,8 +54,8 @@ void MySimpleComputer::oneStep()
     signal(SIGALRM, runHandler);
     newTimer.it_interval.tv_sec = 0; // set timer
     newTimer.it_interval.tv_usec = 0;
-    newTimer.it_value.tv_sec = 1;
-    newTimer.it_value.tv_usec = 0;
+    newTimer.it_value.tv_sec = 0;
+    newTimer.it_value.tv_usec = 15000;
     setitimer(ITIMER_REAL, &newTimer, &oldTimer);
 }
 void MySimpleComputer::runEachMemory()
@@ -64,9 +64,9 @@ void MySimpleComputer::runEachMemory()
     globalPC = this;
     registerSet(IGNORE_IMPULSE, 0); // disable switch key body
     signal(SIGALRM, runHandler);
-    newTimer.it_interval.tv_sec = 1; // set timer
-    newTimer.it_interval.tv_usec = 0;
-    newTimer.it_value.tv_sec = 1;
-    newTimer.it_value.tv_usec = 0;
+    newTimer.it_interval.tv_sec = 0; // set timer
+    newTimer.it_interval.tv_usec = 15000;
+    newTimer.it_value.tv_sec = 0;
+    newTimer.it_value.tv_usec = 15000;
     setitimer(ITIMER_REAL, &newTimer, &oldTimer);
 }
