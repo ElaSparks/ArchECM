@@ -19,7 +19,7 @@ void MySimpleComputer::runHandler(int signal)
 {
     itimerval timerTMP{};                     // var for check step or run
     globalPC->flagsLO = globalPC->flags;      // remind last state of flags
-    globalPC->sc_regInit();                   // clean flags
+    globalPC->registerInit();                 // clean flags
     getitimer(ITIMER_REAL, &timerTMP);        // get currently used timer
     if (globalPC->instructionCounter != 99) { // isn`t end of mem
         globalPC->controlUnit();              // activate CU

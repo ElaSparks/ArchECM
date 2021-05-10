@@ -1,21 +1,21 @@
 #include "../../include/MySimpleComputer.h"
 MySimpleComputer::MySimpleComputer()
 {
-    sc_memoryInit();
-    sc_regInit();
-    sc_accumulatorInit();
+    memoryInit();
+    registerInit();
+    accumulatorInit();
 }
-void MySimpleComputer::sc_regInit()
+void MySimpleComputer::registerInit()
 {
     flags.reset();
 }
-void MySimpleComputer::sc_memoryInit()
+void MySimpleComputer::memoryInit()
 {
     for (auto& item : memory) {
         item = 0;
     }
 }
-void MySimpleComputer::sc_accumulatorInit()
+void MySimpleComputer::accumulatorInit()
 {
     accumulator = 0;
 }

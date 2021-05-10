@@ -6,12 +6,12 @@
 
 class MySimpleComputer : protected BigChars, protected ArithmeticLogicUnit {
 private:
-    int selector = 0;                               // user cursor
-    void sc_regInit();                              // clean registers
-    void sc_memoryInit();                           // clean memory
-    void sc_accumulatorInit();                      // clean accumulator
-    int sc_memorySave(const std::string& filename); // save ram in file
-    int sc_memoryLoad(const std::string& filename); // load ram from file
+    int selector = 0;                            // user cursor
+    void registerInit();                         // clean registers
+    void memoryInit();                           // clean memory
+    void accumulatorInit();                      // clean accumulator
+    int memorySave(const std::string& filename); // save ram in file
+    int memoryLoad(const std::string& filename); // load ram from file
     // gui
     int DrawAll();
     int DrawFrames();      // Print all frames

@@ -26,9 +26,9 @@ void MySimpleComputer::runComputer()
                 } else if (value.substr(value.length() - 3, 3) == "bas") {
                     expect = translateBAS(value);
                 } else if (value.substr(value.length() - 2, 2) == ".o") {
-                    expect = sc_memoryLoad(value);
+                    expect = memoryLoad(value);
                 } else {
-                    sc_memoryInit();
+                    memoryInit();
                     std::cout << "Incorrect file format!" << std::endl;
                 }
                 if (expect == -1) {
@@ -40,8 +40,8 @@ void MySimpleComputer::runComputer()
                 std::cin.ignore(
                         std::numeric_limits<std::streamsize>::max(), '\n');
                 getchar();
-                sc_regInit();
-                sc_accumulatorInit();
+                registerInit();
+                accumulatorInit();
                 instructionCounter = 0;
                 registerSet(IGNORE_IMPULSE, 1);
                 break;
@@ -50,15 +50,15 @@ void MySimpleComputer::runComputer()
                 std::string value;
                 std::cout << "Saving. File name: ";
                 std::cin >> value;
-                sc_memorySave(value + ".o");
+                memorySave(value + ".o");
                 break;
             }
             case key_reset:
                 signal(SIGUSR1, stopHandler);
                 raise(SIGUSR1);
-                sc_memoryInit();
-                sc_regInit();
-                sc_accumulatorInit();
+                memoryInit();
+                registerInit();
+                accumulatorInit();
                 instructionCounterSet(0);
                 registerSet(IGNORE_IMPULSE, 1);
                 break;
