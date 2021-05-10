@@ -1,5 +1,5 @@
 #include "../../include/MyReadKey.h"
-int MyReadKey::rk_switchecho()
+int MyReadKey::switchEcho()
 {
     termios thisSettings{};
     if (tcgetattr(0, &thisSettings) != 0) {

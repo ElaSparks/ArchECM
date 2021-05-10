@@ -14,7 +14,7 @@ void MySimpleComputer::runComputer()
     while (key != key_quit) {             // while quit button isn`t pressed
         registerGet(IGNORE_IMPULSE, impulse);
         if (impulse == 1) {
-            rk_readkey(key);
+            readKey(key);
             switch (key) {
             case key_load: {
                 std::string value;

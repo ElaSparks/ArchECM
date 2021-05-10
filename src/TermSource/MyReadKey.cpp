@@ -1,11 +1,11 @@
 #include "../../include/MyReadKey.h"
-int MyReadKey::rk_readkey(keys& key) // reads a keystroke
+int MyReadKey::readKey(keys& key) // reads a keystroke
 {
-    rk_mytermsave();
-    rk_mytermregime(0, 0, 1, 0, 1);
+    saveTerminalSettings();
+    switchTerminalRegime(0, 0, 1, 0, 1);
     char buf[8] = {0};
     read(STDIN_FILENO, buf, 8);
-    rk_mytermrestore();
+    restoreTerminalSettings();
     if (strcmp(buf, "\E[A") == 0)
         key = key_up;
     else if (strcmp(buf, "\E[B") == 0)

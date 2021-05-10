@@ -1,5 +1,5 @@
 #include "../../include/MyReadKey.h"
-int MyReadKey::rk_mytermregime(
+int MyReadKey::switchTerminalRegime(
         int regime,
         int vtime,
         int vmin,

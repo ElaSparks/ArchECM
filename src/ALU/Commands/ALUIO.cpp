@@ -14,10 +14,10 @@ void ArithmeticLogicUnit::commandRead(int operand)
     newTimer.it_value.tv_usec = 0;
     setitimer(ITIMER_REAL, &newTimer, &oldTimer);
     int value = 0, request;
-    rk_switchecho();
+    switchEcho();
     std::cout << "Input: ";
     std::cin >> value;
-    rk_switchecho();
+    switchEcho();
     request = memorySet(operand, value);
     setitimer(ITIMER_REAL, &oldTimer, &newTimer);
     if (request < 0) {
