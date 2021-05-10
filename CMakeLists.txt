@@ -40,7 +40,6 @@ add_executable(ArchECM
         src/Encode/TranslateASM.cpp
         src/Encode/TranslateBAS.cpp
         src/Encode/BasicHandler/LetterAddress.cpp
-        src/Encode/BasicHandler/JuxtaposeCode.cpp
         src/TermSource/TermScreenSize.cpp
         src/TermSource/TermColors.cpp
         src/GUI/GUINames.cpp
@@ -57,4 +56,5 @@ add_executable(ArchECM
         src/Encode/BasicHandler/StringRefactor.cpp
         src/Encode/BasicHandler/ParseLET.cpp
         src/Encode/BasicHandler/FormQueue.cpp
-        src/Encode/BasicHandler/TransformToASMExpression.cpp)
+        src/Encode/BasicHandler/TransformToASMExpression.cpp
+        src/Encode/BasicHandler/CompareGOTO.cpp)
