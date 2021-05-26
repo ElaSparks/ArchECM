@@ -1,4 +1,9 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Function based on an expression forms a queue of operation.
+ * @param expr - expression
+ * @return queue of operation
+ */
 std::queue<std::string> ArithmeticLogicUnit::setTokensQueue(char* expr)
 {
     std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

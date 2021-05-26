@@ -1,4 +1,11 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * The function fills in the addresses referenced by IF and GOTO.
+ * @param result - String containing the translation result
+ * @param compare - A vector that stores the correspondence between assembler
+ * and basic code
+ * @return Operation result
+ */
 int ArithmeticLogicUnit::compareGOTO(
         std::string& result, const std::vector<int>& compare)
 {

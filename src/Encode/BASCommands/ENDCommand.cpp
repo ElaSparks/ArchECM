@@ -1,4 +1,9 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Broadcasting the END Command. Converting into HALT asm command.
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string ArithmeticLogicUnit::commandEND(int& startAt)
 {
     std::stringstream result;

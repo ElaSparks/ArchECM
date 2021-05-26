@@ -1,5 +1,6 @@
 #include "../../../include/ArithmeticLogicUnit.h"
 /**
+ * Get address of letter in memory.
  * @file LetterEncode.cpp
  * @param symbol - name of variable
  * @return Error or position of variable in memory

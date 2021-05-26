@@ -1,7 +1,11 @@
 #include "../../include/MySimpleComputer.h"
 
 MySimpleComputer* globalPC = nullptr; // reference of this object
-
+/**
+ * Function disable timer and stop the execute operations.
+ * @file Signals.cpp
+ * @param signal - parameter need for signals working
+ */
 void MySimpleComputer::stopHandler(int signal)
 {
     if (globalPC) {
@@ -15,6 +19,11 @@ void MySimpleComputer::stopHandler(int signal)
     }
     globalPC = nullptr;
 }
+/**
+ * Start execution of commands.
+ * @file Signals.cpp
+ * @param signal
+ */
 void MySimpleComputer::runHandler(int signal)
 {
     itimerval timerTMP{};                     // var for check step or run
@@ -46,6 +55,10 @@ void MySimpleComputer::runHandler(int signal)
         pc->DrawAll();
     }
 }
+/**
+ * By step regime of simple computer works.
+ * @file Signals.cpp
+ */
 void MySimpleComputer::oneStep()
 {
     switchEcho(); // disable output symbol
@@ -58,6 +71,10 @@ void MySimpleComputer::oneStep()
     newTimer.it_value.tv_usec = 15000;
     setitimer(ITIMER_REAL, &newTimer, &oldTimer);
 }
+/**
+ * Sequential command execution regime.
+ * @file Signals.cpp
+ */
 void MySimpleComputer::runEachMemory()
 {
     switchEcho(); // disable output symbol

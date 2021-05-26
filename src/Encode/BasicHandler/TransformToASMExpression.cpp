@@ -1,4 +1,11 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Function get elements from queue and broadcast that into asm expression.
+ * @file TransformToASMExpression.cpp
+ * @param rpn - queue of operation
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string ArithmeticLogicUnit::transformToASMExpression(
         std::queue<std::string> rpn, int& startAt)
 {

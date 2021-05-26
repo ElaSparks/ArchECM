@@ -1,4 +1,12 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Function parse complex expression and broadcast into asm code reference.
+ * @file ParseLET.cpp
+ * @param line - a line of basic code. Added to the function to parse the
+ * expression
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string ArithmeticLogicUnit::parseLET(std::string line, int& startAt)
 {
     std::string translated;

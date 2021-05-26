@@ -4,7 +4,9 @@
 #include <cstring>
 #include <termios.h>
 #include <unistd.h>
-
+/**
+ * An enumeration containing all the keys used
+ */
 enum keys {
     key_up,
     key_down,
@@ -21,7 +23,9 @@ enum keys {
     key_quit,
     key_other
 };
-
+/**
+ * Small library responsible for working with terminal modes.
+ */
 class MyReadKey {
 private:
     termios mySettings{}; // to store my current settings

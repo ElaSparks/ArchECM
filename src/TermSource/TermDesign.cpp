@@ -2,7 +2,7 @@
 /**
  * The function completely clears the contents of the terminal by flushing the
  * buffer.
- * @file
+ * @file TermDesign.cpp
  */
 void TermDesign::cleanScreen()
 {
@@ -10,7 +10,7 @@ void TermDesign::cleanScreen()
 }
 /**
  * The function moves the cursor to the specified coordinate
- * @file
+ * @file TermDesign.cpp
  * @param rows - number of rows
  * @param cols - number of column
  * @return Operation result

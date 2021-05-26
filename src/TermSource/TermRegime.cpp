@@ -1,4 +1,14 @@
 #include "../../include/MyReadKey.h"
+/**
+ * Function switch terminal works regime
+ * @file TermRegime.cpp
+ * @param regime - canonical input
+ * @param vtime - time waiting for read symbol
+ * @param vmin - symbols count for read successful
+ * @param echo - display symbols on screen
+ * @param sigint - enable/disable signals
+ * @return Operation result
+ */
 int MyReadKey::switchTerminalRegime(
         int regime,
         int vtime,

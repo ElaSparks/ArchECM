@@ -1,4 +1,12 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Broadcasting the IF Command. Converting into JZ and JNEG asm commands. The
+ * address in temporarily presented in the format '?(address in basic)'
+ * @param line - a line of basic code. Added to the function to parse the
+ * address
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string
 ArithmeticLogicUnit::commandIF(const std::string& line, int& startAt)
 {

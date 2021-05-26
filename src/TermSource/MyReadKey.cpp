@@ -1,4 +1,10 @@
 #include "../../include/MyReadKey.h"
+/**
+ * Function read pressed key and put code of the key in variable by reference.
+ * @file MyReadKey.cpp
+ * @param key - variable which will contain the ky code
+ * @return Operation result
+ */
 int MyReadKey::readKey(keys& key) // reads a keystroke
 {
     saveTerminalSettings();

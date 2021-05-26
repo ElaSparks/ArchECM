@@ -1,4 +1,9 @@
 #include "../../include/MyReadKey.h"
+/**
+ * Switch display symbols which u put in the terminal
+ * @file TermEcho.cpp
+ * @return Operation result
+ */
 int MyReadKey::switchEcho()
 {
     termios thisSettings{};

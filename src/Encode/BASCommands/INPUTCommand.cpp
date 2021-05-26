@@ -1,4 +1,11 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Broadcasting the INPUT Command. Converting into READ asm command.
+ * @param line - a line of basic code. Added to the function to parse the
+ * letter address
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string
 ArithmeticLogicUnit::commandINPUT(const std::string& line, int& startAt)
 {

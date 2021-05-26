@@ -1,4 +1,12 @@
 #include "../../../include/ArithmeticLogicUnit.h"
+/**
+ * Broadcasting the LET Command. This function parse the expression end convert
+ * them into assembler reference.
+ * @param line - a line of basic code. Added to the function to parse the
+ * expression
+ * @param startAt - the line number with which the broadcast will begin
+ * @return Broadcast result
+ */
 std::string
 ArithmeticLogicUnit::commandLET(const std::string& line, int& startAt)
 {
@@ -24,7 +32,6 @@ ArithmeticLogicUnit::commandLET(const std::string& line, int& startAt)
         result << " STORE " << destination << "\n";
         return result.str();
     } else {
-        int stack = 0;
         std::string translated = parseLET(line, startAt);
         if (translated.empty())
             return std::string{};
@@ -33,6 +40,5 @@ ArithmeticLogicUnit::commandLET(const std::string& line, int& startAt)
             replace(translated, "$" + std::to_string(i), std::to_string(pos));
         }
         return translated;
-        //        return std::string{};
     }
 }
